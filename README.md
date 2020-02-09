@@ -11,6 +11,17 @@
 * React
 * React-Redux
 
+### Setting up the application
+* $ close the repository
+* $ cd ideahub
+* $ yarn install
+* $ yarn start
+  
+### Running unit tests
+* $ yarn test
+* $ yarn test -- --coverage
+
+
 ## Available Scripts
 
 In the project directory, you can run:
