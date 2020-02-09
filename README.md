@@ -1,4 +1,15 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# IdeaHub-Web
+
+### PROBLEM
+* There are lots of people with ideas, brilliant minds, spread across all over the world.However, most of these people don’t have the resources necessary to make theseideas a success.
+* There are lots of people in the world with skills in the world but they do not have anidea of what to build or where to use their skills.
+* There are lots of people with resources in the world but they have neither the skillsnor ideas of how to use the resources to make the world a better place.
+* There are platforms like SharkTank and other places where these people meet toshare the ideas and resources in order to build something great. However, manypeople in the world cannot afford to go to shark tank either.Conclusion: ​~This is the problem our product solves
+  
+# Requirements
+* TypeScript
+* React
+* React-Redux
 
 ## Available Scripts
 
@@ -37,8 +48,3 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).

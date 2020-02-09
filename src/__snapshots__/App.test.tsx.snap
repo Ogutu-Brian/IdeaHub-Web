@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tests mounting of the application without crushing should test for mounting of the application without crushing 1`] = `ReactWrapper {}`;
