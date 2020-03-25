@@ -1,5 +1,6 @@
 import React from "react";
 import "antd/dist/antd.css";
+import { Row } from "antd";
 import {
   BrowserRouter as Router,
   Switch,
@@ -9,6 +10,8 @@ import {
 
 import { LandingPage } from "./LandingPage";
 import { SideMenu } from "./SideMenu";
+import { Application } from "./Application";
+
 import "./App.scss";
 
 const App: React.FC = props => {
@@ -17,7 +20,7 @@ const App: React.FC = props => {
       <Switch>
         <Redirect exact from="/" to="/login" />
         <Route component={LandingPage} exact path="/login" />
-        <Route component={SideMenu} exact path="/sidemenu" />
+        <Route component={Application} exact path="/ideahub/" />
       </Switch>
     </Router>
   );
