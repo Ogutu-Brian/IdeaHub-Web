@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { Row, Col } from "antd";
 import { useMedia } from "react-use";
-import { Header, Input } from "../Components";
+import { Header, Input, PasswordInput } from "../Components";
 
 import { Button } from "../Components";
 
@@ -9,11 +9,15 @@ import styles from "./LandingPage.module.scss";
 
 const LandingPage: React.FC = () => {
   const isMobile: boolean = useMedia("(max-width: 575px)");
+  const [hasAccount, setHasAccount] = useState<boolean>(false);
+
+  const joinNow = (): void => setHasAccount(false);
+  const signIn = (): void => setHasAccount(true);
 
   return (
     <>
       <Row className={styles.header}>
-        <Header title="IdeaHub" />
+        <Header title="IdeaHub" joinNow={joinNow} signIn={signIn} />
       </Row>
       <Row className={styles.landingPage}>
         <Row type="flex" className={styles.contentSection}>
@@ -27,15 +31,25 @@ const LandingPage: React.FC = () => {
           </Col>
           <Col span={isMobile ? 24 : 12}>
             <Row className={styles.form}>
+              {!hasAccount && (
+                <Col style={{ marginBottom: 16 }}>
+                  <Input placeholder="Username" />
+                </Col>
+              )}
               <Col style={{ marginBottom: 16 }}>
                 <Input placeholder="Email" />
               </Col>
+              {!hasAccount && (
+                <Col style={{ marginBottom: 16 }}>
+                  <PasswordInput placeholder="Password" />
+                </Col>
+              )}
               <Col style={{ marginBottom: 40 }}>
-                <Input type="password" placeholder="Password" />
+                <PasswordInput placeholder="Confirm password" />
               </Col>
               <Col>
                 <Button style={{ width: "100%" }} type="primary" size="large">
-                  Join now
+                  {hasAccount ? "Sign In" : "Join now"}
                 </Button>
               </Col>
             </Row>
