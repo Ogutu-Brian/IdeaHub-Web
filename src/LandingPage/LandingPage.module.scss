@@ -1,0 +1,10 @@
+@import "../styles/styles.module.scss";
+
+.landingPage {
+  background: $color-light;
+  height: 100vh;
+
+  @include respond-to("md-large") {
+    padding-left: 16px;
+  }
+}
