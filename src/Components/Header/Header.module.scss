@@ -1,16 +1,6 @@
 @import "../../styles/styles.module.scss";
 
 .header {
-  :global(.ant-page-header-heading) {
-    padding: 16px;
-    padding-left: 160px;
-    border-bottom: solid 1px $color-light-gray;
-
-    @include respond-to("md-large") {
-      padding-left: 8px;
-    }
-  }
-
   :global(.ant-page-header-heading-title) {
     color: $color-primary;
     font-size: 32px;
@@ -19,10 +9,10 @@
       font-size: 16px;
     }
   }
-}
 
-.joinButton {
-  :global(.ant-btn) {
-    background: red;
+  .joinButton {
+    :global(.ant-btn) {
+      background: red;
+    }
   }
 }

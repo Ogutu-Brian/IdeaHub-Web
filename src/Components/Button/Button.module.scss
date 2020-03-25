@@ -2,6 +2,8 @@
 
 .button {
   &:global(.ant-btn) {
+    border-radius: 8px;
+    font-weight: bold;
     &:active,
     &:focus,
     &:hover {

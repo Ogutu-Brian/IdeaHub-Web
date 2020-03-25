@@ -1,0 +1,20 @@
+@import "../../styles/styles.module.scss";
+
+:global(.ant-input) {
+  background: red;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  background: $color-light;
+  height: 56px;
+
+  &:hover,
+  &:active,
+  &:focus {
+    box-shadow: none;
+    border-bottom: 1px solid $color-primary;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+  }
+}
