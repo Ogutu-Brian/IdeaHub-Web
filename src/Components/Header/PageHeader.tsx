@@ -4,13 +4,20 @@ import { AlignCenterOutlined, UserOutlined } from "@ant-design/icons";
 
 import styles from "./PageHeader.module.scss";
 
-const PageHeader: React.FC = () => (
+interface Props {
+  openSideBar: () => void;
+}
+
+const PageHeader: React.FC<Props> = props => (
   <Row className={styles.pageHeader}>
     <AntPageHeader
       title={
         <Row type="flex" gutter={16}>
           <Col>
-            <AlignCenterOutlined className={styles.title} />
+            <AlignCenterOutlined
+              className={styles.title}
+              onClick={props.openSideBar}
+            />
           </Col>
           <Col>Finite Analysis</Col>
         </Row>
