@@ -1,6 +1,5 @@
 import React from "react";
 import "antd/dist/antd.css";
-import { Row } from "antd";
 import {
   BrowserRouter as Router,
   Switch,
@@ -9,7 +8,6 @@ import {
 } from "react-router-dom";
 
 import { LandingPage } from "./LandingPage";
-import { SideMenu } from "./SideMenu";
 import { Application } from "./Application";
 
 import "./App.scss";

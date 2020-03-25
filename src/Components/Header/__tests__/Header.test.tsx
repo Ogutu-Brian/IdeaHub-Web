@@ -1,12 +1,14 @@
 import React from "react";
 import { mount, ReactWrapper } from "enzyme";
-import { PageHeaderProps } from "antd/lib/page-header";
 
 import Header from "../Header";
+import { Props } from "../interfaces";
 
 describe("header Tests", () => {
-  const props: PageHeaderProps = {
-    title: "Example Page"
+  const props: Props = {
+    title: "Example Page",
+    joinNow: jest.fn(),
+    signIn: jest.fn()
   };
 
   const wrapper: ReactWrapper = mount(<Header {...props} />);

@@ -1,16 +1,10 @@
 import React from "react";
 import { PageHeader, Row, Col } from "antd";
-import { PageHeaderProps } from "antd/lib/page-header";
 
 import { Button } from "../Button";
+import { Props, JoinAndSignInProps } from "./interfaces";
+
 import styles from "./Header.module.scss";
-
-interface JoinAndSignInProps {
-  joinNow: () => void;
-  signIn: () => void;
-}
-
-interface Props extends PageHeaderProps, JoinAndSignInProps {}
 
 const JoinAndSignInButtons: React.FC<JoinAndSignInProps> = props => (
   <Row type="flex" gutter={24}>
