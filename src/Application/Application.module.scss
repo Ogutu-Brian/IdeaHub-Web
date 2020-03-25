@@ -1,0 +1,13 @@
+@import "../styles/styles.module.scss";
+
+.application {
+  height: 100vh;
+
+  .header {
+    border-bottom: 1px solid $color-light-gray;
+
+    .title {
+      cursor: pointer;
+    }
+  }
+}

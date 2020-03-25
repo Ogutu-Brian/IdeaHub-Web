@@ -6,6 +6,7 @@ import { Header, Input, PasswordInput } from "../Components";
 import { Button } from "../Components";
 
 import styles from "./LandingPage.module.scss";
+import { Link } from "react-router-dom";
 
 const LandingPage: React.FC = () => {
   const isMobile: boolean = useMedia("(max-width: 575px)");
@@ -48,9 +49,11 @@ const LandingPage: React.FC = () => {
                 <PasswordInput placeholder="Confirm password" />
               </Col>
               <Col>
-                <Button style={{ width: "100%" }} type="primary" size="large">
-                  {hasAccount ? "Sign In" : "Join now"}
-                </Button>
+                <Link to="/ideahub">
+                  <Button style={{ width: "100%" }} type="primary" size="large">
+                    {hasAccount ? "Sign In" : "Join now"}
+                  </Button>
+                </Link>
               </Col>
             </Row>
           </Col>
