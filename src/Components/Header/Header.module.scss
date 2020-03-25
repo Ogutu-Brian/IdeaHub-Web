@@ -1,0 +1,18 @@
+@import "../../styles/styles.module.scss";
+
+.header {
+  :global(.ant-page-header-heading-title) {
+    color: $color-primary;
+    font-size: 32px;
+
+    @include respond-to("md-large") {
+      font-size: 16px;
+    }
+  }
+
+  .joinButton {
+    :global(.ant-btn) {
+      background: red;
+    }
+  }
+}

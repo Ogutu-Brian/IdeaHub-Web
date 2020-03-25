@@ -1,0 +1,27 @@
+@import "../../styles/styles.module.scss";
+
+@mixin input-border-colors {
+  &:hover,
+  &:active,
+  &:focus {
+    box-shadow: none;
+    border-bottom: 1px solid $color-primary;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+  }
+}
+
+:global(.ant-input) {
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  background: $color-light;
+  height: 56px;
+
+  @include input-border-colors();
+}
+
+:global(.ant-input-affix-wrapper .ant-input:not(.ant-input-disabled)) {
+  @include input-border-colors();
+}

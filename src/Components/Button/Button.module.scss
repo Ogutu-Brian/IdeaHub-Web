@@ -1,0 +1,26 @@
+@import "../../styles/styles.module.scss";
+
+.button {
+  &:global(.ant-btn) {
+    border-radius: 8px;
+    font-weight: bold;
+    &:active,
+    &:focus,
+    &:hover {
+      color: $color-primary;
+      border: 1px solid $color-primary;
+    }
+  }
+
+  &:global(.ant-btn-primary) {
+    background: $color-primary;
+    border: none;
+    color: $color-light;
+    &:active,
+    &:focus,
+    &:hover {
+      color: $color-light;
+      border: none;
+    }
+  }
+}

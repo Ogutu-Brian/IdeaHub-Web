@@ -1,6 +1,14 @@
 import React from "react";
+import { Row } from "antd";
+import "antd/dist/antd.css";
+
+import { LandingPage } from "./LandingPage";
 import "./App.scss";
 
-const App = () => <div className="App">Welcome To Idea Hub</div>;
+const App: React.FC = props => (
+  <Row>
+    <LandingPage />
+  </Row>
+);
 
 export default App;
