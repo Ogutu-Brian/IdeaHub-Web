@@ -9,11 +9,7 @@ import styles from "./Header.module.scss";
 const JoinAndSignInButtons: React.FC<JoinAndSignInProps> = props => (
   <Row type="flex" gutter={24}>
     <Col>
-      <Button
-        className={styles.joinButton}
-        size="large"
-        onClick={props.joinNow}
-      >
+      <Button size="large" onClick={props.joinNow}>
         Join now
       </Button>
     </Col>
