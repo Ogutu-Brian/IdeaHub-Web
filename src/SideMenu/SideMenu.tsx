@@ -7,12 +7,12 @@ import { MenuTitle } from "./components";
 
 import styles from "./SideMenu.module.scss";
 
+interface Props extends MenuProps {
+  collapsed: boolean | undefined;
+}
+
 const { SubMenu } = Menu;
 const { Sider } = Layout;
-
-interface Props extends MenuProps {
-  collapsed: boolean;
-}
 
 const SideMenu: React.FC<Props> = props => {
   const [selectedKey, selectKey] = useState<string>("");

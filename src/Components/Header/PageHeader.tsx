@@ -7,6 +7,7 @@ import styles from "./PageHeader.module.scss";
 interface Props {
   openSideBar: () => void;
 }
+
 const { Header } = Layout;
 
 const PageHeader: React.FC<Props> = props => (
@@ -19,7 +20,7 @@ const PageHeader: React.FC<Props> = props => (
         />
       </Col>
       <Col className={styles.avatar}>
-        <Avatar icon={<UserOutlined />} className={styles.icon}/>
+        <Avatar icon={<UserOutlined />} className={styles.icon} />
       </Col>
     </Row>
   </Header>

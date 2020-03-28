@@ -5,7 +5,7 @@ import { Layout } from "antd";
 import { SideMenu } from "../SideMenu";
 import { PageHeader } from "../Components";
 
-const Application: React.FC = props => {
+const Application: React.FC = () => {
   const [showSideBar, openSideBar] = useState<boolean>(true);
   const { Content } = Layout;
 
