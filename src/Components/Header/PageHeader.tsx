@@ -11,7 +11,7 @@ interface Props {
 const { Header } = Layout;
 
 const PageHeader: React.FC<Props> = props => (
-  <Header style={{ background: "white" }} className={styles.pageHeader}>
+  <Header className={styles.pageHeader}>
     <Row type="flex" justify="space-between">
       <Col>
         <AlignCenterOutlined
