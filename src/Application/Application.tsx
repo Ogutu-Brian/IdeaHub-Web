@@ -1,28 +1,27 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { Row, Col } from "antd";
+import { Layout } from "antd";
 
 import { SideMenu } from "../SideMenu";
 import { PageHeader } from "../Components";
 
-import styles from "./Application.module.scss";
-
-const Application: React.FC = () => {
+const Application: React.FC = props => {
   const [showSideBar, openSideBar] = useState<boolean>(true);
+  const { Content } = Layout;
 
   return (
     <Router>
-      <Row type="flex" className={styles.application}>
-        <Col span={showSideBar ? 4 : 0}>
-          <SideMenu />
-        </Col>
-        <Col span={showSideBar ? 20 : 24}>
+      <Layout>
+        <SideMenu collapsed={!showSideBar} />
+        <Layout>
           <PageHeader openSideBar={() => openSideBar(!showSideBar)} />
-          <Switch>
-            <Route exact path="/ideahub/" />
-          </Switch>
-        </Col>
-      </Row>
+          <Content>
+            <Switch>
+              <Route exact path="/ideahub/" />
+            </Switch>
+          </Content>
+        </Layout>
+      </Layout>
     </Router>
   );
 };

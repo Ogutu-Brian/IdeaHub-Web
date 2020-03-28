@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Col, PageHeader as AntPageHeader, Avatar } from "antd";
+import { Row, Col, Avatar, Layout } from "antd";
 import { AlignCenterOutlined, UserOutlined } from "@ant-design/icons";
 
 import styles from "./PageHeader.module.scss";
@@ -7,31 +7,22 @@ import styles from "./PageHeader.module.scss";
 interface Props {
   openSideBar: () => void;
 }
+const { Header } = Layout;
 
 const PageHeader: React.FC<Props> = props => (
-  <Row className={styles.pageHeader}>
-    <AntPageHeader
-      title={
-        <Row type="flex" gutter={16}>
-          <Col>
-            <AlignCenterOutlined
-              className={styles.title}
-              onClick={props.openSideBar}
-            />
-          </Col>
-          <Col>Finite Analysis</Col>
-        </Row>
-      }
-      extra={
-        <Row>
-          <Avatar
-            icon={<UserOutlined />}
-            style={{ background: "#001529", cursor: "pointer" }}
-          />
-        </Row>
-      }
-    />
-  </Row>
+  <Header style={{ background: "white" }} className={styles.pageHeader}>
+    <Row type="flex" justify="space-between">
+      <Col>
+        <AlignCenterOutlined
+          style={{ cursor: "pointer", marginLeft: "-32px" }}
+          onClick={props.openSideBar}
+        />
+      </Col>
+      <Col className={styles.avatar}>
+        <Avatar icon={<UserOutlined />} className={styles.icon}/>
+      </Col>
+    </Row>
+  </Header>
 );
 
 export default PageHeader;
