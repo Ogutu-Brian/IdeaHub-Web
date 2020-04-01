@@ -18,7 +18,7 @@ const App: React.FC = props => {
       <Switch>
         <Redirect exact from="/" to="/login" />
         <Route component={LandingPage} exact path="/login" />
-        <Route component={Application} exact path="/ideahub/" />
+        <Route component={Application} path="/ideahub" />
       </Switch>
     </Router>
   );

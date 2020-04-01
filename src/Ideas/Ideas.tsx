@@ -1,7 +1,7 @@
 import React from "react";
 
 const Ideas: React.FC = () => {
-  return <div></div>;
+  return <div>dsdsds</div>;
 };
 
 export default Ideas;
