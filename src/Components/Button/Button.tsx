@@ -4,8 +4,8 @@ import { ButtonProps } from "antd/lib/button";
 
 import styles from "./Button.module.scss";
 
-const Button: React.FC<ButtonProps> = props => {
-  return <AntdButton {...props} className={styles.button} />;
-};
+const Button: React.FC<ButtonProps> = props => (
+  <AntdButton {...props} className={styles.button} />
+);
 
 export default Button;
