@@ -12,16 +12,14 @@ import { Application } from "./Application";
 
 import "./App.scss";
 
-const App: React.FC = props => {
-  return (
-    <Router>
-      <Switch>
-        <Redirect exact from="/" to="/login" />
-        <Route component={LandingPage} exact path="/login" />
-        <Route component={Application} path="/ideahub" />
-      </Switch>
-    </Router>
-  );
-};
+const App: React.FC = () => (
+  <Router>
+    <Switch>
+      <Redirect exact from="/" to="/login" />
+      <Route component={LandingPage} exact path="/login" />
+      <Route component={Application} path="/ideahub" />
+    </Switch>
+  </Router>
+);
 
 export default App;

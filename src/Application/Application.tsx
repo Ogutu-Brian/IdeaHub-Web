@@ -1,10 +1,5 @@
 import React, { useState } from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  useRouteMatch
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Layout } from "antd";
 import { useMedia } from "react-use";
 
@@ -13,7 +8,7 @@ import { PageHeader } from "../Components";
 import { DeviceMeasures } from "../utils";
 import { Ideas } from "../Ideas";
 
-const Application: React.FC = () => {
+const Application: React.FC<any> = props => {
   const [showSideBar, openSideBar] = useState<boolean>(true);
   const [showDrawer, openDrawer] = useState<boolean>(false);
   const { Content } = Layout;
