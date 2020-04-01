@@ -7,9 +7,10 @@ import { Button } from "../Components";
 
 import styles from "./LandingPage.module.scss";
 import { Link } from "react-router-dom";
+import { DeviceMeasures } from "../utils";
 
 const LandingPage: React.FC = () => {
-  const isMobile: boolean = useMedia("(max-width: 575px)");
+  const isMobile: boolean = useMedia(DeviceMeasures.MOBILE);
   const [hasAccount, setHasAccount] = useState<boolean>(false);
 
   const joinNow = (): void => setHasAccount(false);
