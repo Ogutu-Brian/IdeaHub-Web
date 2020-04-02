@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import { Layout } from "antd";
 import { useMedia } from "react-use";
 
@@ -34,7 +34,7 @@ const Application: React.FC<any> = props => {
           />
           <Content>
             <Switch>
-              <Route exact path={path} />
+              <Redirect exact from={path} to={`${path}/ideas`} />
               <Route exact path={`${path}/ideas`} component={Ideas} />
             </Switch>
           </Content>
