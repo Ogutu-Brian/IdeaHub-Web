@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tests for the footer should test for footer 1`] = `ReactWrapper {}`;

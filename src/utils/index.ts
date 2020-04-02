@@ -1,3 +1,4 @@
 import { DeviceMeasures } from "./constants";
+import { MockData } from './mockdata';
 
-export { DeviceMeasures };
+export { DeviceMeasures, MockData };

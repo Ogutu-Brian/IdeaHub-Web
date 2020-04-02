@@ -1,3 +1,3 @@
-import Idea from "./Indea";
+import Idea from "./Idea";
 
 export { Idea };

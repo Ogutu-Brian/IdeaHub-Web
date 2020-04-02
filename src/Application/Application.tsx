@@ -7,6 +7,7 @@ import { SideMenu } from "../SideMenu";
 import { PageHeader } from "../Components";
 import { DeviceMeasures } from "../utils";
 import { Ideas } from "../Ideas";
+import { Footer } from "../Components/Footer";
 
 const Application: React.FC<any> = props => {
   const [showSideBar, openSideBar] = useState<boolean>(true);
@@ -37,6 +38,7 @@ const Application: React.FC<any> = props => {
               <Route exact path={`${path}/ideas`} component={Ideas} />
             </Switch>
           </Content>
+          <Footer />
         </Layout>
       </Layout>
     </Router>

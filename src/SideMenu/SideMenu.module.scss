@@ -1,0 +1,7 @@
+@import '../styles/styles.module.scss';
+
+.sider {
+    :global(.ant-layout-sider-children) {
+        background-color: $color-dark-blue-lighter;
+    }
+}
