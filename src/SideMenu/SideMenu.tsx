@@ -19,21 +19,21 @@ const SideMenu: React.FC<Props> = props => {
   const isMobile: boolean = useMedia(DeviceMeasures.MOBILE);
 
   return !isMobile ? (
-    <Sider collapsible collapsed={collapsed} trigger={null}>
+    <Sider collapsible collapsed={collapsed} trigger={null} collapsedWidth={0}>
       <Menu />
     </Sider>
   ) : (
-    <Drawer
-      placement="left"
-      closable={false}
-      visible={openDrawer}
-      getContainer={false}
-      bodyStyle={{ padding: 0 }}
-      onClose={closeDrawer}
-    >
-      <Menu />
-    </Drawer>
-  );
+      <Drawer
+        placement="left"
+        closable={false}
+        visible={openDrawer}
+        getContainer={false}
+        bodyStyle={{ padding: 0 }}
+        onClose={closeDrawer}
+      >
+        <Menu />
+      </Drawer>
+    );
 };
 
 export default SideMenu;

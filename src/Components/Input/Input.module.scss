@@ -1,11 +1,12 @@
 @import "../../styles/styles.module.scss";
 
 @mixin input-border-colors {
+
   &:hover,
   &:active,
   &:focus {
     box-shadow: none;
-    border-bottom: 1px solid $color-dark-blue;
+    border-bottom: 1px solid $color-dark-blue-lighter;
     border-top: none;
     border-left: none;
     border-right: none;

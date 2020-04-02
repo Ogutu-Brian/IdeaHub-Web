@@ -4,18 +4,20 @@
   &:global(.ant-btn) {
     border-radius: 8px;
     font-weight: bold;
+
     &:active,
     &:focus,
     &:hover {
-      color: $color-dark-blue;
-      border: 1px solid $color-dark-blue;
+      color: $color-dark-blue-lighter;
+      border: 1px solid $color-dark-blue-lighter;
     }
   }
 
   &:global(.ant-btn-primary) {
-    background: $color-dark-blue;
+    background: $color-dark-blue-lighter;
     border: none;
     color: $color-light;
+
     &:active,
     &:focus,
     &:hover {
