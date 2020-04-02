@@ -1,0 +1,15 @@
+    @import '../../styles/styles.module.scss';
+
+    :global {
+        .ant-menu-dark {
+            background: $color-dark-blue-lighter;
+        }
+
+        .ant-menu-dark .ant-menu-inline.ant-menu-sub {
+            background: $color-dark-blue-lighter;
+        }
+
+        .ant-menu.ant-menu-dark .ant-menu-item-selected {
+            background: $color-light-grey;
+        }
+    }

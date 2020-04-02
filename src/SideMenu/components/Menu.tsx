@@ -3,6 +3,7 @@ import { Menu as AntMenu } from "antd";
 import { faClock, faAddressCard } from "@fortawesome/free-regular-svg-icons";
 
 import MenuTitle from "./MenuTitle";
+import styles from './Menu.module.scss';
 
 const { SubMenu } = AntMenu;
 
@@ -16,9 +17,10 @@ const Menu: React.FC = () => {
       selectedKeys={[selectedKey]}
       mode="inline"
       style={{ height: "100vh" }}
+      className={styles.menu}
     >
-      <SubMenu title={<MenuTitle icon={faClock} label="My Ideas" />} key="sub1">
-        <AntMenu.Item key="1" onClick={() => selectOption("1")}>
+      <SubMenu title={<MenuTitle icon={faClock} label="My Ideas" />} key="sub1" className={styles.menu}>
+        <AntMenu.Item key="1" onClick={() => selectOption("1")} >
           Finite Analysis
         </AntMenu.Item>
         <AntMenu.Item key="2" onClick={() => selectOption("2")}>

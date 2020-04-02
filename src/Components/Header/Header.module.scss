@@ -2,7 +2,7 @@
 
 .header {
   :global(.ant-page-header-heading-title) {
-    color: $color-dark-blue;
+    color: $color-dark-blue-lighter;
     font-size: 32px;
 
     @include respond-to("md-large") {
