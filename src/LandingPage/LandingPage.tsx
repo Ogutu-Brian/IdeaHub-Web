@@ -32,7 +32,7 @@ const LandingPage: React.FC = () => {
             </Row>
           </Col>
           <Col span={isMobile ? 24 : 12}>
-            <Row className={styles.form}>
+            <Row className={isMobile ? '' : styles.form}>
               {!hasAccount && (
                 <Col style={{ marginBottom: 16 }}>
                   <Input placeholder="Username" />
