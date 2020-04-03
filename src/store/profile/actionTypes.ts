@@ -1,0 +1,1 @@
+export const USER_DETAILS: string = 'USER_DETAILS';
