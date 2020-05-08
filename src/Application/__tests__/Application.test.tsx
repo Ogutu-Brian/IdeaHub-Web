@@ -1,14 +1,14 @@
 import React from 'react';
 import { mount, ReactWrapper } from 'enzyme';
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
-import thunk from 'redux-thunk';
+import configureMockStore from 'redux-mock-store';
+import thunk, { ThunkMiddleware } from 'redux-thunk';
 
-import reducers from '../../store/reducers';
 import Application from '../Application';
 
 describe('Tests for application component', () => {
-  const store = createStore(reducers, applyMiddleware(thunk));
+  const middleWares: ThunkMiddleware[] = [thunk];
+  const store = configureMockStore(middleWares)();
 
   const wrapper: ReactWrapper = mount(
     <Provider store={store}>
