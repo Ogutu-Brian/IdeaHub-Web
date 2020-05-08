@@ -9,7 +9,7 @@ const initialState: Profile = {
   lastName: '',
 };
 
-const profile = (state: Profile = initialState, action: Action) => {
+const profile = (state: Profile = initialState, action: Action): Profile => {
   switch (action.type) {
     case USER_DETAILS:
       return action.payload;
