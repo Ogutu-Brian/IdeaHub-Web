@@ -9,7 +9,7 @@ const Search: React.FC<InputProps> = (props) => {
   const { className, ...restProps } = props;
   const classNames: string = [className, styles.Search].join(' ');
 
-  return <Input prefix={<SearchOutlined />} className={classNames} {...restProps} />;
+  return <Input prefix={<SearchOutlined />} className={classNames} {...restProps} placeholder="Search" />;
 };
 
 export default Search;
