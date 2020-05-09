@@ -1,0 +1,13 @@
+.Search {
+  :global(.ant-input) {
+    border: none;
+  }
+
+  &:global(.ant-input) {
+    border: none;
+  }
+
+  :global(.ant-input:focus) {
+    box-shadow: none;
+  }
+}
