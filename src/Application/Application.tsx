@@ -36,8 +36,14 @@ const Application: React.FC<Props> = (props) => {
       <Layout>
         <SideMenu collapsed={!showSideBar} openDrawer={showDrawer} closeDrawer={() => openDrawer(false)} />
         <Layout>
-          <PageHeader openSideBar={!isMobile ? () => openSideBar(!showSideBar) : () => openDrawer(true)} />
-          <Content>
+          <div style={{ position: 'fixed', width: '100%', zIndex: 1 }}>
+            <PageHeader
+              openSideBar={!isMobile ? () => openSideBar(!showSideBar) : () => openDrawer(true)}
+              isMobile={isMobile}
+              collapsed={!showSideBar}
+            />
+          </div>
+          <Content style={{ marginTop: '80px' }}>
             <Switch>
               <Redirect exact from={path} to={`${path}/ideas`} />
               <Route exact path={`${path}/ideas`} component={Ideas} />
