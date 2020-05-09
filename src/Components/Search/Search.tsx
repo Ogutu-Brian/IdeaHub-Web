@@ -6,10 +6,10 @@ import { InputProps } from 'antd/lib/input';
 import styles from './Search.module.scss';
 
 const Search: React.FC<InputProps> = (props) => {
-  const { className } = props;
+  const { className, ...restProps } = props;
   const classNames: string = [className, styles.Search].join(' ');
 
-  return <Input prefix={<SearchOutlined />} className={classNames} />;
+  return <Input prefix={<SearchOutlined />} className={classNames} {...restProps} />;
 };
 
 export default Search;
