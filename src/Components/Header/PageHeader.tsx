@@ -2,6 +2,8 @@ import React from 'react';
 import { Row, Col, Avatar, Layout } from 'antd';
 import { AlignCenterOutlined, UserOutlined } from '@ant-design/icons';
 
+import { Search } from '../../Components';
+
 import styles from './PageHeader.module.scss';
 
 interface Props {
@@ -19,7 +21,14 @@ const PageHeader: React.FC<Props> = (props) => {
     <Header className={styles.pageHeader}>
       <Row type="flex" justify="space-between">
         <Col>
-          <AlignCenterOutlined style={{ cursor: 'pointer', marginLeft: '-32px' }} onClick={props.openSideBar} />
+          <Row type="flex">
+            <Col>
+              <AlignCenterOutlined style={{ cursor: 'pointer', marginLeft: '-32px' }} onClick={props.openSideBar} />
+            </Col>
+            <Col>
+              <Search />
+            </Col>
+          </Row>
         </Col>
         <Col className={styles.avatar} style={{ marginRight: !collapsed && !isMobile ? '12rem' : '' }}>
           <Avatar icon={<UserOutlined />} className={styles.icon} />

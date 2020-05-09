@@ -1,7 +1,6 @@
-@import "../../styles/styles.module.scss";
+@import '../../styles/styles.module.scss';
 
 @mixin input-border-colors {
-
   &:hover,
   &:active,
   &:focus {
@@ -13,16 +12,28 @@
   }
 }
 
-:global(.ant-input) {
-  border-top: none;
-  border-left: none;
-  border-right: none;
-  background: $color-light;
-  height: 56px;
+.Input {
+  &:global(.ant-input) {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    background: $color-light;
+    height: 56px;
 
-  @include input-border-colors();
-}
+    @include input-border-colors();
+  }
 
-:global(.ant-input-affix-wrapper .ant-input:not(.ant-input-disabled)) {
-  @include input-border-colors();
+  :global(.ant-input) {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    background: $color-light;
+    height: 56px;
+
+    @include input-border-colors();
+  }
+
+  &:global(.ant-input-affix-wrapper .ant-input:not(.ant-input-disabled)) {
+    @include input-border-colors();
+  }
 }
