@@ -1,0 +1,18 @@
+@import '../styles/styles.module.scss';
+
+.postIdea {
+  flex-direction: column;
+  background: $color-light;
+
+  .profile {
+    padding-left: 8px;
+  }
+
+  :global(.ant-input:placeholder-shown) {
+    font-size: 20px;
+  }
+}
+
+.input {
+  cursor: pointer;
+}

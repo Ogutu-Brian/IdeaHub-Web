@@ -4,8 +4,10 @@ import { InputProps } from 'antd/lib/input';
 
 import styles from './Input.module.scss';
 
+const { Password } = AntdInput;
+
 const PasswordInput: React.FC<InputProps> = (props) => (
-  <AntdInput.Password {...props} className={styles.Input} autoComplete="off" />
+  <Password {...props} className={styles.Input} autoComplete="off" />
 );
 
 const Input: React.FC<InputProps> = (props) => <AntdInput {...props} className={styles.Input} autoComplete="off" />;
