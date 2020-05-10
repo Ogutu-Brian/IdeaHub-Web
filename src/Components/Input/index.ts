@@ -1,4 +1,4 @@
-import Input, { PasswordInput } from './Input';
+import Input, { PasswordInput, TextArea } from './Input';
 import BorderLessInput from './BorderLessInput';
 
-export { Input, PasswordInput, BorderLessInput };
+export { Input, PasswordInput, BorderLessInput, TextArea };

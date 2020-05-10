@@ -1,2 +1,14 @@
+@import '../../styles/styles.module.scss';
+
 .modal {
+  :global {
+    .ant-modal-title {
+      color: $color-dark-blue-lighter;
+    }
+
+    .ant-modal-header,
+    .ant-modal-footer {
+      background: $color-light-gray;
+    }
+  }
 }

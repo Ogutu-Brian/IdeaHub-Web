@@ -19,6 +19,7 @@
     border-right: none;
     background: $color-light;
     height: 56px;
+    resize: none;
 
     @include input-border-colors();
   }

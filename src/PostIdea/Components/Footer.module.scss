@@ -1,0 +1,35 @@
+@import '../../styles/styles.module.scss';
+
+.footer {
+  flex-direction: row-reverse;
+
+  .button {
+    font-size: 16px;
+  }
+
+  .cancel {
+    padding-top: 8px;
+    margin-right: 16px;
+    font-weight: bold;
+    font-size: 16px;
+    padding-left: 16px;
+    padding-right: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+
+    &:hover {
+      transition: background 1s;
+      transition: color 1s;
+      background: $color-gray-lighter;
+      color: $color-dark-blue;
+    }
+  }
+}
+
+.button {
+  width: 100%;
+}
+
+.mobileFooter {
+  margin-bottom: 8px;
+}
