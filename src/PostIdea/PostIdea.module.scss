@@ -1,0 +1,27 @@
+@import '../styles/styles.module.scss';
+
+.postIdea {
+  background: $color-light;
+
+  :global(.ant-input:placeholder-shown) {
+    font-size: 20px;
+  }
+
+  :global(.ant-input) {
+    padding-left: 0px;
+  }
+}
+
+.input {
+  cursor: pointer;
+}
+
+.name {
+  padding-left: 8px;
+  padding-top: 4px;
+  color: $color-dark-blue-lighter;
+}
+
+.inputField {
+  margin-bottom: 38px;
+}

@@ -43,3 +43,6 @@ export const userDetailsAction: Action = {
   type: USER_DETAILS,
   payload: testUser,
 };
+
+export const placeHolderImage: string =
+  'https://res.cloudinary.com/authorsheaven/image/upload/v1571160865/57595_1521027489_qlbdng.jpg';

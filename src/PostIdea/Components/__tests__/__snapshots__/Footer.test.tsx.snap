@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tesst for post idea modal footer Should render footer without crushing 1`] = `ReactWrapper {}`;
+
+exports[`Tesst for post idea modal footer Should render mobile footer without crushing 1`] = `ReactWrapper {}`;

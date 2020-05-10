@@ -1,0 +1,18 @@
+@import '../../styles/styles.module.scss';
+
+:global(.ant-modal-mask) {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal {
+  :global {
+    .ant-modal-title {
+      color: $color-dark-blue-lighter;
+    }
+
+    .ant-modal-header,
+    .ant-modal-footer {
+      background: $color-light-gray;
+    }
+  }
+}

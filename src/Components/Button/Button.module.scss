@@ -1,4 +1,4 @@
-@import "../../styles/styles.module.scss";
+@import '../../styles/styles.module.scss';
 
 .button {
   &:global(.ant-btn) {
@@ -15,6 +15,19 @@
 
   &:global(.ant-btn-primary) {
     background: $color-dark-blue-lighter;
+    border: none;
+    color: $color-light;
+
+    &:active,
+    &:focus,
+    &:hover {
+      color: $color-light;
+      border: none;
+    }
+  }
+
+  &:global(.ant-btn-danger) {
+    background: $color-danger;
     border: none;
     color: $color-light;
 
