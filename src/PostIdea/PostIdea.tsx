@@ -1,14 +1,21 @@
 import React from 'react';
-import { Row } from 'antd';
+import { Row, Col, Avatar } from 'antd';
 import { InputProps } from 'antd/lib/input';
 
 import { BorderLessInput } from '../Components';
+import { placeHolderImage } from '../MockData/mockdata';
+
 import styles from './PostIdea.module.scss';
 
 const PostIdea: React.FC<InputProps> = (props) => {
   return (
-    <Row type="flex" className={styles.postIdea}>
-      <Row className={styles.profile}>Brian Ogutu</Row>
+    <Row className={styles.postIdea}>
+      <Row type="flex">
+        <Col>
+          <Avatar src={placeHolderImage} />
+        </Col>
+        <Col className={styles.name}>Brian Ogutu</Col>
+      </Row>
       <Row>
         <BorderLessInput {...props} className={styles.input} />
       </Row>

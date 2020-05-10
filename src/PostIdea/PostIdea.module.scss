@@ -1,18 +1,23 @@
 @import '../styles/styles.module.scss';
 
 .postIdea {
-  flex-direction: column;
   background: $color-light;
-
-  .profile {
-    padding-left: 8px;
-  }
 
   :global(.ant-input:placeholder-shown) {
     font-size: 20px;
+  }
+
+  :global(.ant-input) {
+    padding-left: 0px;
   }
 }
 
 .input {
   cursor: pointer;
+}
+
+.name {
+  padding-left: 8px;
+  padding-top: 4px;
+  color: $color-dark-blue-lighter;
 }
