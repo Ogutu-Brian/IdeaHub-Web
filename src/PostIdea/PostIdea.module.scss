@@ -12,10 +12,6 @@
   }
 }
 
-.input {
-  cursor: pointer;
-}
-
 .name {
   padding-left: 8px;
   padding-top: 4px;
@@ -24,4 +20,15 @@
 
 .inputField {
   margin-bottom: 38px;
+}
+
+.avatarSection {
+  cursor: pointer;
+}
+
+.placeHolderText {
+  font-size: 20px;
+  color: $color-dark-light;
+  font-weight: bold;
+  cursor: pointer;
 }

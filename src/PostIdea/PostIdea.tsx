@@ -1,16 +1,15 @@
 import React, { useState } from 'react';
 import { Row, Col, Avatar } from 'antd';
-import { InputProps } from 'antd/lib/input';
 import { useMedia } from 'react-use';
 
-import { BorderLessInput, Modal, Input, TextArea } from '../Components';
+import { Modal, Input, TextArea } from '../Components';
 import { placeHolderImage } from '../MockData/mockdata';
 import { DeviceMeasures } from '../utils';
 import { Footer, MobileFooter } from './Components';
 
 import styles from './PostIdea.module.scss';
 
-const PostIdea: React.FC<InputProps> = (props) => {
+const PostIdea: React.FC = () => {
   const isMobile: boolean = useMedia(DeviceMeasures.MOBILE);
   const [modalOpen, openModal] = useState<boolean>(false);
   const cancel = (): void => openModal(false);
@@ -34,14 +33,14 @@ const PostIdea: React.FC<InputProps> = (props) => {
           {isMobile && <MobileFooter onCancel={cancel} onOk={postIdea} />}
         </Row>
       </Modal>
-      <Row type="flex">
+      <Row type="flex" onClick={() => openModal(true)} className={styles.avatarSection}>
         <Col>
           <Avatar src={placeHolderImage} />
         </Col>
         <Col className={styles.name}>Brian Ogutu</Col>
       </Row>
-      <Row>
-        <BorderLessInput onClick={() => openModal(true)} className={styles.input} {...props} />
+      <Row className={styles.placeHolderText} onClick={() => openModal(true)}>
+        What is your idea?
       </Row>
     </Row>
   );
