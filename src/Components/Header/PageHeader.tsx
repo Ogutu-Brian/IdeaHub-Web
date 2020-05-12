@@ -21,7 +21,7 @@ const PageHeader: React.FC<Props> = (props) => {
   const dropDownItems: DropDownItem[] = [
     {
       name: 'Profile',
-      link: '/profile',
+      link: 'ideahub/profile',
     },
     {
       name: 'Settings',
