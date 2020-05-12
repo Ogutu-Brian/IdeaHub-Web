@@ -23,7 +23,7 @@ const LandingPage: React.FC = () => {
       </Row>
       <Row className={styles.landingPage}>
         <Row type="flex" className={styles.contentSection}>
-          <Col span={isMobile ? 24 : 12}>
+          <Col lg={12} md={12} sm={24}>
             <Row className={styles.information}>
               <Col className={styles.title}>POOL RESOURCES</Col>
               <Col className={styles.text}>Pool human and monetary resources at your comfort</Col>
