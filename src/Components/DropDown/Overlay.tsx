@@ -15,6 +15,10 @@ const Overlay: React.FC<Props> = (props) => {
     <div className={classNames}>
       <Dropdown.Menu>
         <Dropdown.Item>Item 1</Dropdown.Item>
+        <Dropdown.Item>Item 1</Dropdown.Item>
+        <Dropdown.Item>Item 1</Dropdown.Item>
+        <Dropdown.Item>Item 1</Dropdown.Item>
+        <Dropdown.Item>Item 1</Dropdown.Item>
       </Dropdown.Menu>
     </div>
   );

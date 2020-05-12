@@ -1,3 +1,15 @@
+@import '../../styles/styles.module.scss';
+
 .overlayContainer {
   margin-top: 12px;
+
+  :global :global(.gwSgSl) {
+    cursor: pointer;
+    border-top: 1px solid $color-grey-lighter;
+    border-bottom: 1px solid $color-grey-lighter;
+
+    &:hover {
+      background-color: $color-dark-blue-lighter;
+    }
+  }
 }
