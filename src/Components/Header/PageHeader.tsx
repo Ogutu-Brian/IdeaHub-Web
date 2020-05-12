@@ -6,6 +6,7 @@ import { Search } from '../../Search';
 
 import styles from './PageHeader.module.scss';
 import { DropDown } from '../DropDown';
+import { DropDownItem } from '../DropDown/interfaces';
 
 interface Props {
   openSideBar: () => void;
@@ -17,6 +18,20 @@ const { Header } = Layout;
 
 const PageHeader: React.FC<Props> = (props) => {
   const { isMobile, collapsed } = props;
+  const dropDownItems: DropDownItem[] = [
+    {
+      name: 'Profile',
+      link: '/profile',
+    },
+    {
+      name: 'Settings',
+      link: '/settings',
+    },
+    {
+      name: 'Sign out',
+      link: '/login',
+    },
+  ];
 
   return (
     <Header className={styles.pageHeader}>
@@ -32,7 +47,7 @@ const PageHeader: React.FC<Props> = (props) => {
           </Row>
         </Col>
         <Col className={styles.avatar} style={{ marginRight: !collapsed && !isMobile ? '12rem' : '' }}>
-          <DropDown>
+          <DropDown items={dropDownItems}>
             <Avatar icon={<UserOutlined />} className={styles.icon} />
           </DropDown>
         </Col>
