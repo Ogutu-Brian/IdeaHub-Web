@@ -5,13 +5,13 @@ import { coverImage, profileImage } from '../MockData';
 import styles from './MyProfile.module.scss';
 import { Button, Modal } from '../Components';
 import { Ideas } from '../Ideas';
-import { ModalHeader } from './Components';
+import { ModalHeader, ProfileForm } from './Components';
 
 const MyProfile: React.FC = () => {
   return (
     <Row>
-      <Modal title={<ModalHeader />} centered={true} closeIcon={null} className={styles.modal} footer={null}>
-        Content
+      <Modal title={<ModalHeader />} centered={true} closeIcon={null} className={styles.modal} visible footer={null}>
+        <ProfileForm />
       </Modal>
       <Row>
         <Col lg={6} md={4} sm={0} />

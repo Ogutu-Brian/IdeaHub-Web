@@ -6,15 +6,26 @@ import styles from './Input.module.scss';
 
 const { Password, TextArea: AntTextArea } = AntdInput;
 
-const PasswordInput: React.FC<InputProps> = (props) => (
-  <Password {...props} className={styles.Input} autoComplete="off" />
-);
+const PasswordInput: React.FC<InputProps> = (props) => {
+  const { className, ...restProps } = props;
+  const classNames: string = [styles.Input, className].join(' ');
 
-const Input: React.FC<InputProps> = (props) => <AntdInput {...props} className={styles.Input} autoComplete="off" />;
+  return <Password className={classNames} autoComplete="off" {...restProps} />;
+};
 
-const TextArea: React.FC<TextAreaProps> = (props) => (
-  <AntTextArea {...props} className={styles.Input} autoComplete="off" />
-);
+const Input: React.FC<InputProps> = (props) => {
+  const { className, ...restProps } = props;
+  const classNames: string = [styles.Input, className].join(' ');
+
+  return <AntdInput className={classNames} autoComplete="off" {...restProps} />;
+};
+
+const TextArea: React.FC<TextAreaProps> = (props) => {
+  const { className, ...restProps } = props;
+  const classNames: string = [styles.Input, className].join(' ');
+
+  return <AntTextArea className={classNames} autoComplete="off" {...restProps} />;
+};
 
 export { PasswordInput, TextArea };
 

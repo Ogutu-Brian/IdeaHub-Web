@@ -1,2 +1,4 @@
 import ModalHeader from './ModalHeader';
-export { ModalHeader };
+import ProfileForm from './ProfileForm';
+
+export { ModalHeader, ProfileForm };
