@@ -16,8 +16,12 @@ const MyProfile: React.FC = () => {
   return (
     <Row>
       <Modal
-        title={<ModalHeader onSave={saveProfile} onCancel={() => openModal(false)} />}
-        centered={true}
+        title={
+          <ModalHeader
+            onSave={saveProfile}
+            onCancel={() => openModal(false)}
+          />
+        }
         closeIcon={null}
         className={styles.modal}
         visible={modalOpen}
