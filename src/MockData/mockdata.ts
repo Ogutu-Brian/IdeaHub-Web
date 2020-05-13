@@ -46,3 +46,6 @@ export const userDetailsAction: Action = {
 
 export const placeHolderImage: string =
   'https://res.cloudinary.com/authorsheaven/image/upload/v1571160865/57595_1521027489_qlbdng.jpg';
+
+export const coverImage: string =
+  'https://res.cloudinary.com/authorsheaven/image/upload/v1589328450/gogo-tomago-hiro-hamada-honey-lemon-tadashi-hamada-animated-film-hero-girl-png-clip-art_afcrtp.png';

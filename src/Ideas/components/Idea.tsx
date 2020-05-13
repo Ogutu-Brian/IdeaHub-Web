@@ -14,10 +14,11 @@ interface Props extends CardProps {
 
 const Idea: React.FC<Props> = (props) => {
   const { idea } = props;
+
   return (
     <Row>
-      <Col lg={4} md={4} sm={0} />
-      <Col lg={16} md={16} sm={24}>
+      <Col lg={6} md={4} sm={0} />
+      <Col lg={12} md={16} sm={24}>
         <Row type="flex" className={styles.idea}>
           <Col span={2}>
             <Avatar src={idea.author.avatar} />
@@ -50,7 +51,7 @@ const Idea: React.FC<Props> = (props) => {
           </Col>
         </Row>
       </Col>
-      <Col lg={4} md={4} sm={0} />
+      <Col lg={6} md={4} sm={0} />
     </Row>
   );
 };
