@@ -25,7 +25,10 @@ const MyProfile: React.FC = () => {
               <Button size="large">Edit profile</Button>
             </Col>
           </Row>
-          <Row className={styles.nameContainer}>Brian Ogutu</Row>
+          <Row className={styles.nameContainer}>
+            <Row className={styles.name}>Brian Ogutu</Row>
+            <Row>Software Engineer Tech Lead</Row>
+          </Row>
         </Col>
         <Col lg={6} md={4} sm={0} />
       </Row>

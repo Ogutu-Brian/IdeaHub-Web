@@ -46,10 +46,13 @@
 
 .nameContainer {
   color: $color-dark-blue-lighter;
-  font-weight: bold;
-  font-size: 20px;
   padding-left: 28px;
   padding-bottom: 12px;
+
+  .name {
+    font-weight: bold;
+    font-size: 20px;
+  }
 }
 
 .ideasContainer {
