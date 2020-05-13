@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Row, Col } from 'antd';
 
 import { coverImage, profileImage } from '../MockData';
@@ -8,9 +8,22 @@ import { Ideas } from '../Ideas';
 import { ModalHeader, ProfileForm } from './Components';
 
 const MyProfile: React.FC = () => {
+  const [modalOpen, openModal] = useState<boolean>(false);
+  const saveProfile = (): void => {
+    openModal(false);
+  };
+
   return (
     <Row>
-      <Modal title={<ModalHeader />} centered={true} closeIcon={null} className={styles.modal} visible footer={null}>
+      <Modal
+        title={<ModalHeader onSave={saveProfile} onCancel={() => openModal(false)} />}
+        centered={true}
+        closeIcon={null}
+        className={styles.modal}
+        visible={modalOpen}
+        footer={null}
+        onCancel={() => openModal(false)}
+      >
         <ProfileForm />
       </Modal>
       <Row>
@@ -26,7 +39,9 @@ const MyProfile: React.FC = () => {
               </div>
             </Col>
             <Col className={styles.editProfileButton}>
-              <Button size="large">Edit profile</Button>
+              <Button size="large" onClick={() => openModal(true)}>
+                Edit profile
+              </Button>
             </Col>
           </Row>
           <Row className={styles.nameContainer}>
