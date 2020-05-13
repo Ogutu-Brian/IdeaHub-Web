@@ -1,0 +1,24 @@
+@import '../../styles/styles.module.scss';
+
+.closeIcon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: space-around;
+  padding-top: 8px;
+  margin-top: -8px;
+  cursor: pointer;
+  color: $color-dark-blue-lighter;
+  font-weight: bold;
+
+  &:hover {
+    background: #ceddfd;
+    transition: background 1s;
+  }
+}
+
+.headerText {
+  font-weight: bold;
+  padding-left: 4px;
+}

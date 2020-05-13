@@ -58,3 +58,13 @@
 .ideasContainer {
   padding-top: 20px;
 }
+
+.modal {
+  :global(.ant-modal-close) {
+    display: none;
+  }
+
+  :global(.ant-modal-header) {
+    padding: 16px 8px 4px 8px;
+  }
+}
