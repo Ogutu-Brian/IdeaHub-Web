@@ -1,0 +1,13 @@
+@import '../../styles/styles.module.scss';
+
+.overlayContainer {
+  margin-top: 12px;
+
+  :global :global(.gwSgSl) {
+    cursor: pointer;
+
+    &:hover {
+      background-color: $color-dark-blue-lighter;
+    }
+  }
+}

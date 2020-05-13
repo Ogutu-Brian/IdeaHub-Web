@@ -33,12 +33,12 @@ const MobileFooter: React.FC<Props> = (props) => {
   return (
     <>
       <Col className={styles.mobileFooter}>
-        <Button type="primary" className={styles.button} onClick={onOk}>
+        <Button type="primary" className={styles.button} onClick={onOk} size="large">
           Post Idea
         </Button>
       </Col>
       <Col>
-        <Button type="danger" className={styles.button} onClick={onCancel}>
+        <Button type="danger" className={styles.button} onClick={onCancel} size="large">
           Cancel
         </Button>
       </Col>

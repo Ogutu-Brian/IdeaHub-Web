@@ -4,6 +4,8 @@
   &:global(.ant-btn) {
     border-radius: 8px;
     font-weight: bold;
+    color: $color-dark-blue-lighter;
+    border: 1px solid $color-dark-blue-lighter;
 
     &:active,
     &:focus,

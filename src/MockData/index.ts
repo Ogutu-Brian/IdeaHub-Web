@@ -1,2 +1,2 @@
-import { MockData } from './mockdata';
-export { MockData };
+import { MockData, placeHolderImage, coverImage, profileImage } from './mockdata';
+export { MockData, placeHolderImage, coverImage, profileImage };

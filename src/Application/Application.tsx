@@ -8,11 +8,14 @@ import { SideMenu } from '../SideMenu';
 import { PageHeader } from '../Components';
 import { DeviceMeasures } from '../utils';
 import { Ideas } from '../Ideas';
-import { Footer } from '../Components/Footer';
 import { fetchUserProfile } from '../store/profile/actions';
 import { Store } from '../store/interfaces';
 import { Profile } from '../store/profile/actions/interfaces';
 import { testUser } from '../MockData/mockdata';
+import MyProfile from '../MyProfile/MyProfile';
+import { LandingPage } from '../LandingPage';
+
+import styles from './Application.module.scss';
 
 interface Props {
   profile: Profile;
@@ -33,23 +36,28 @@ const Application: React.FC<Props> = (props) => {
 
   return (
     <Router>
+      <Route exact path={'/login'} component={LandingPage} />
       <Layout>
-        <SideMenu collapsed={!showSideBar} openDrawer={showDrawer} closeDrawer={() => openDrawer(false)} />
+        <SideMenu
+          collapsed={!showSideBar}
+          openDrawer={showDrawer}
+          closeDrawer={() => openDrawer(false)}
+        />
         <Layout>
-          <div style={{ position: 'fixed', width: '100%', zIndex: 1 }}>
+          <div className={styles.header}>
             <PageHeader
               openSideBar={!isMobile ? () => openSideBar(!showSideBar) : () => openDrawer(true)}
               isMobile={isMobile}
               collapsed={!showSideBar}
             />
           </div>
-          <Content style={{ marginTop: '80px' }}>
+          <Content className={styles.content}>
             <Switch>
               <Redirect exact from={path} to={`${path}/ideas`} />
               <Route exact path={`${path}/ideas`} component={Ideas} />
+              <Route exact path={`${path}/profile`} component={MyProfile} />
             </Switch>
           </Content>
-          <Footer />
         </Layout>
       </Layout>
     </Router>

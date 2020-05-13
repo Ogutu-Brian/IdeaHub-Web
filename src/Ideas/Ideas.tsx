@@ -8,21 +8,30 @@ import { MockData } from '../MockData';
 import styles from './Ideas.module.scss';
 import { PostIdea } from '../PostIdea';
 
-const Ideas: React.FC = () => (
-  <Row className={styles.ideas}>
-    <Row>
-      <Col lg={4} md={4} sm={0} />
-      <Col lg={16} md={16} sm={24} className={styles.postIdea}>
-        <PostIdea placeholder={'What is your idea?'} />
-      </Col>
-      <Col lg={4} md={4} sm={0} />
-    </Row>
-    {MockData.Ideas.map((idea: IdeaInterface, index: number) => (
-      <Col className={styles.ideaCard} key={index}>
-        <Idea idea={idea} />
-      </Col>
-    ))}
-  </Row>
-);
+interface Props {
+  hidePostIdea?: boolean;
+}
 
+const Ideas: React.FC<Props> = (props) => {
+  const { hidePostIdea } = props;
+
+  return (
+    <Row className={styles.ideas}>
+      {!hidePostIdea && (
+        <Row>
+          <Col lg={6} md={4} sm={0} />
+          <Col lg={12} md={16} sm={24} className={styles.postIdea}>
+            <PostIdea />
+          </Col>
+          <Col lg={6} md={4} sm={0} />
+        </Row>
+      )}
+      {MockData.Ideas.map((idea: IdeaInterface, index: number) => (
+        <Col className={styles.ideaCard} key={index}>
+          <Idea idea={idea} />
+        </Col>
+      ))}
+    </Row>
+  );
+};
 export default Ideas;

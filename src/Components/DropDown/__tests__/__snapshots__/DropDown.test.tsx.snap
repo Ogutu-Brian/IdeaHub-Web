@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tests for DropDown component Should render dropdown without crushing 1`] = `ReactWrapper {}`;

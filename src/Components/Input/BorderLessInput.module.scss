@@ -1,8 +1,12 @@
 .input {
   border: none;
 
-  &:global(.ant-input:focus) {
+  :global(.ant-input) {
     border: none;
-    box-shadow: none;
+
+    &:focus {
+      border: none;
+      box-shadow: none;
+    }
   }
 }
