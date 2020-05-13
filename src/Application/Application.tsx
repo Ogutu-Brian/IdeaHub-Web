@@ -36,28 +36,30 @@ const Application: React.FC<Props> = (props) => {
 
   return (
     <Router>
-      <Switch>
-        <Route exact path={'/login'} component={LandingPage} />
+      <Route exact path={'/login'} component={LandingPage} />
+      <Layout>
+        <SideMenu
+          collapsed={!showSideBar}
+          openDrawer={showDrawer}
+          closeDrawer={() => openDrawer(false)}
+        />
         <Layout>
-          <SideMenu collapsed={!showSideBar} openDrawer={showDrawer} closeDrawer={() => openDrawer(false)} />
-          <Layout>
-            <div className={styles.header}>
-              <PageHeader
-                openSideBar={!isMobile ? () => openSideBar(!showSideBar) : () => openDrawer(true)}
-                isMobile={isMobile}
-                collapsed={!showSideBar}
-              />
-            </div>
-            <Content className={styles.content}>
-              <Switch>
-                <Redirect exact from={path} to={`${path}/ideas`} />
-                <Route exact path={`${path}/ideas`} component={Ideas} />
-                <Route exact path={`${path}/profile`} component={MyProfile} />
-              </Switch>
-            </Content>
-          </Layout>
+          <div className={styles.header}>
+            <PageHeader
+              openSideBar={!isMobile ? () => openSideBar(!showSideBar) : () => openDrawer(true)}
+              isMobile={isMobile}
+              collapsed={!showSideBar}
+            />
+          </div>
+          <Content className={styles.content}>
+            <Switch>
+              <Redirect exact from={path} to={`${path}/ideas`} />
+              <Route exact path={`${path}/ideas`} component={Ideas} />
+              <Route exact path={`${path}/profile`} component={MyProfile} />
+            </Switch>
+          </Content>
         </Layout>
-      </Switch>
+      </Layout>
     </Router>
   );
 };
