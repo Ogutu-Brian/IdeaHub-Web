@@ -25,7 +25,7 @@ const PageHeader: React.FC<Props> = (props) => {
     },
     {
       name: 'Settings',
-      link: '/settings',
+      link: '#',
     },
     {
       name: 'Sign out',

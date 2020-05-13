@@ -13,6 +13,7 @@ import { Store } from '../store/interfaces';
 import { Profile } from '../store/profile/actions/interfaces';
 import { testUser } from '../MockData/mockdata';
 import MyProfile from '../MyProfile/MyProfile';
+import { LandingPage } from '../LandingPage';
 
 import styles from './Application.module.scss';
 
@@ -35,25 +36,28 @@ const Application: React.FC<Props> = (props) => {
 
   return (
     <Router>
-      <Layout>
-        <SideMenu collapsed={!showSideBar} openDrawer={showDrawer} closeDrawer={() => openDrawer(false)} />
+      <Switch>
+        <Route exact path={'/login'} component={LandingPage} />
         <Layout>
-          <div className={styles.header}>
-            <PageHeader
-              openSideBar={!isMobile ? () => openSideBar(!showSideBar) : () => openDrawer(true)}
-              isMobile={isMobile}
-              collapsed={!showSideBar}
-            />
-          </div>
-          <Content className={styles.content}>
-            <Switch>
-              <Redirect exact from={path} to={`${path}/ideas`} />
-              <Route exact path={`${path}/ideas`} component={Ideas} />
-              <Route exact path={`${path}/profile`} component={MyProfile} />
-            </Switch>
-          </Content>
+          <SideMenu collapsed={!showSideBar} openDrawer={showDrawer} closeDrawer={() => openDrawer(false)} />
+          <Layout>
+            <div className={styles.header}>
+              <PageHeader
+                openSideBar={!isMobile ? () => openSideBar(!showSideBar) : () => openDrawer(true)}
+                isMobile={isMobile}
+                collapsed={!showSideBar}
+              />
+            </div>
+            <Content className={styles.content}>
+              <Switch>
+                <Redirect exact from={path} to={`${path}/ideas`} />
+                <Route exact path={`${path}/ideas`} component={Ideas} />
+                <Route exact path={`${path}/profile`} component={MyProfile} />
+              </Switch>
+            </Content>
+          </Layout>
         </Layout>
-      </Layout>
+      </Switch>
     </Router>
   );
 };
