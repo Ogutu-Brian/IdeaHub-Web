@@ -1,5 +1,4 @@
 import React from 'react';
-import { Dropdown } from '@primer/components';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
 
 import { DropDownItem } from './interfaces';
@@ -23,18 +22,22 @@ const Overlay: React.FC<Props> = (props) => {
 
   return (
     <div className={classNames}>
-      <Dropdown.Menu>
+      <ul className="dropdown-menu dropdown-menu-sw">
         {items?.length &&
           items.map((item: DropDownItem, index: number) => (
-            <Dropdown.Item
-              key={index}
-              style={{ borderBottom: index + 1 < items.length ? '1px solid #e6e6e6' : '' }}
-              onClick={() => handleOptionClick(item.link)}
-            >
-              {item.name}
-            </Dropdown.Item>
+            <li key={index}>
+              <a
+                href={item.link}
+                key={index}
+                style={{ borderBottom: index + 1 < items.length ? '1px solid #e6e6e6' : '' }}
+                className="dropdown-item"
+                onClick={() => handleOptionClick(item.link)}
+              >
+                {item.name}
+              </a>
+            </li>
           ))}
-      </Dropdown.Menu>
+      </ul>
     </div>
   );
 };
