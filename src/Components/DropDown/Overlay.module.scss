@@ -3,7 +3,7 @@
 .overlayContainer {
   margin-top: 12px;
 
-  :global :global(a) {
+  :global(a) {
     cursor: pointer;
 
     &:hover {
