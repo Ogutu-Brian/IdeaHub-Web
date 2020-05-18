@@ -2,16 +2,16 @@ import React from 'react';
 import { mount, ReactWrapper } from 'enzyme';
 import { BrowserRouter } from 'react-router-dom';
 
-import MyProfile from '../MyProfile';
+import Profile from '../Profile';
 
-describe('Tests for my profile container', () => {
+describe('Tests for profile', () => {
   const wrapper: ReactWrapper = mount(
     <BrowserRouter>
-      <MyProfile />
+      <Profile />
     </BrowserRouter>,
   );
 
-  it('Should render my profile without crushing', () => {
+  it('Should render profile component without crushing', () => {
     expect(wrapper).toMatchSnapshot();
   });
 });

@@ -1,11 +1,24 @@
-import React from "react";
-import { mount, ReactWrapper } from "enzyme";
-import SideMenu from "../SideMenu";
+import React from 'react';
+import { mount, ReactWrapper } from 'enzyme';
+import { BrowserRouter } from 'react-router-dom';
 
-describe("Tests for the sideMenu", () => {
-  const wrapper: ReactWrapper = mount(<SideMenu />);
+import SideMenu from '../SideMenu';
+import { Props } from '../interfaces';
 
-  it("should render the SideMenu without crushing", () => {
+describe('Tests for the sideMenu', () => {
+  const props: Props = {
+    collapsed: false,
+    openDrawer: true,
+    closeDrawer: jest.fn(),
+  };
+
+  const wrapper: ReactWrapper = mount(
+    <BrowserRouter>
+      <SideMenu {...props} />
+    </BrowserRouter>,
+  );
+
+  it('should render the SideMenu without crushing', () => {
     expect(wrapper).toMatchSnapshot();
   });
 });

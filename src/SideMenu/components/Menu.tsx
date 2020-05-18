@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
-import { Menu as AntMenu } from 'antd';
+import { Menu as AntMenu, Row } from 'antd';
 import { faClock, faAddressCard } from '@fortawesome/free-regular-svg-icons';
+import { withRouter, RouteComponentProps, Link } from 'react-router-dom';
 
 import MenuTitle from './MenuTitle';
+
 import styles from './Menu.module.scss';
 
 const { SubMenu } = AntMenu;
 
-interface Props {
+interface Props extends RouteComponentProps {
   collapsed?: boolean;
   isMobile: boolean;
 }
@@ -16,15 +18,18 @@ const Menu: React.FC<Props> = (props) => {
   const [selectedKey, selectKey] = useState<string>('');
   const selectOption = (option: string): void => selectKey(option);
   const { collapsed, isMobile } = props;
+  const homeLink: string = '/ideahub/ideas';
 
   return (
     <div style={{ position: !isMobile ? 'fixed' : 'relative', display: collapsed ? 'none' : '' }}>
+      <Row className={styles.home}>
+        <Link to={homeLink}>IdeaHub</Link>
+      </Row>
       <AntMenu
         theme="dark"
         selectedKeys={[selectedKey]}
         mode="inline"
         style={{ height: '100vh', width: !isMobile ? '200px' : '' }}
-        className={styles.menu}
       >
         <SubMenu title={<MenuTitle icon={faClock} label="My Ideas" />} key="sub1" className={styles.menu}>
           <AntMenu.Item key="1" onClick={() => selectOption('1')}>
@@ -62,4 +67,4 @@ const Menu: React.FC<Props> = (props) => {
   );
 };
 
-export default Menu;
+export default withRouter(Menu);

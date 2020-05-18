@@ -14,6 +14,7 @@ import { Profile } from '../store/profile/actions/interfaces';
 import { testUser } from '../MockData/mockdata';
 import MyProfile from '../MyProfile/MyProfile';
 import { LandingPage } from '../LandingPage';
+import { Profile as PersonComponent } from '../Profile';
 
 import styles from './Application.module.scss';
 
@@ -38,11 +39,7 @@ const Application: React.FC<Props> = (props) => {
     <Router>
       <Route exact path={'/login'} component={LandingPage} />
       <Layout>
-        <SideMenu
-          collapsed={!showSideBar}
-          openDrawer={showDrawer}
-          closeDrawer={() => openDrawer(false)}
-        />
+        <SideMenu collapsed={!showSideBar} openDrawer={showDrawer} closeDrawer={() => openDrawer(false)} />
         <Layout>
           <div className={styles.header}>
             <PageHeader
@@ -56,6 +53,7 @@ const Application: React.FC<Props> = (props) => {
               <Redirect exact from={path} to={`${path}/ideas`} />
               <Route exact path={`${path}/ideas`} component={Ideas} />
               <Route exact path={`${path}/profile`} component={MyProfile} />
+              <Route exact path={`${path}/person/:name`} component={PersonComponent} />
             </Switch>
           </Content>
         </Layout>

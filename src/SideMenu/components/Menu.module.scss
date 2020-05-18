@@ -1,15 +1,38 @@
-    @import '../../styles/styles.module.scss';
+@import '../../styles/styles.module.scss';
 
-    :global {
-        .ant-menu-dark {
-            background: $color-dark-blue-lighter;
-        }
+:global {
+  .ant-menu-dark {
+    background: $color-dark-blue-lighter;
+  }
 
-        .ant-menu-dark .ant-menu-inline.ant-menu-sub {
-            background: $color-dark-blue-lighter;
-        }
+  .ant-menu-dark .ant-menu-inline.ant-menu-sub {
+    background: $color-dark-blue-lighter;
+  }
 
-        .ant-menu.ant-menu-dark .ant-menu-item-selected {
-            background: $color-light-grey;
-        }
+  .ant-menu.ant-menu-dark .ant-menu-item-selected {
+    background: $color-light-grey;
+  }
+}
+
+.home {
+  background: $color-dark-blue-lighter;
+  color: $color-light;
+  font-weight: bolder;
+  font-size: larger;
+  padding-left: 20px;
+  cursor: pointer;
+  padding-top: 20px;
+  padding-bottom: 28px;
+
+  &:hover {
+    color: $color-light-gray;
+  }
+
+  a {
+    color: $color-light;
+
+    &:hover {
+      color: $color-light-gray;
     }
+  }
+}
