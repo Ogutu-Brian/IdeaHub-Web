@@ -6,6 +6,7 @@
     font-weight: bold;
     color: $color-dark-blue-lighter;
     border: 1px solid $color-dark-blue-lighter;
+    transition: background 1s;
 
     &:active,
     &:focus,
