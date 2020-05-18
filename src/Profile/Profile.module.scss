@@ -69,4 +69,10 @@
   border: 1px solid $color-dark-blue-lighter;
   margin-top: -8px;
   cursor: pointer;
+  transition: background 20ms;
+
+  &:hover {
+    color: $color-light;
+    background: $color-dark-blue-lighter;
+  }
 }

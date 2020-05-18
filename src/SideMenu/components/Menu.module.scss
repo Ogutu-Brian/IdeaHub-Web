@@ -27,4 +27,12 @@
   &:hover {
     color: $color-light-gray;
   }
+
+  a {
+    color: $color-light;
+
+    &:hover {
+      color: $color-light-gray;
+    }
+  }
 }

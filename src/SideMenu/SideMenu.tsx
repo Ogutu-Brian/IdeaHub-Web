@@ -1,18 +1,12 @@
 import React from 'react';
 import { Layout, Drawer } from 'antd';
-import { MenuProps } from 'antd/lib/menu';
 import { useMedia } from 'react-use';
 
 import { Menu } from './components';
 import { DeviceMeasures } from '../utils';
+import { Props } from './interfaces';
 
 import styles from './SideMenu.module.scss';
-
-interface Props extends MenuProps {
-  collapsed: boolean | undefined;
-  openDrawer: boolean;
-  closeDrawer: () => void;
-}
 
 const { Sider } = Layout;
 
