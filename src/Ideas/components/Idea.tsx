@@ -2,13 +2,14 @@ import React from 'react';
 import { Row, Col, Avatar } from 'antd';
 import { CardProps } from 'antd/lib/card';
 import { faComments, faThumbsUp, faShareSquare } from '@fortawesome/free-regular-svg-icons';
+import { withRouter, RouteComponentProps } from 'react-router-dom';
 
 import { Idea as IdeaInterface } from '../../interfaces';
 import { Icon } from '../../Components';
 
 import styles from './Idea.module.scss';
 
-interface Props extends CardProps {
+interface Props extends CardProps, RouteComponentProps {
   idea: IdeaInterface;
 }
 
@@ -56,4 +57,4 @@ const Idea: React.FC<Props> = (props) => {
   );
 };
 
-export default Idea;
+export default withRouter(Idea);
