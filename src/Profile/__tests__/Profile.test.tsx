@@ -1,5 +1,6 @@
 import React from 'react';
 import { mount, ReactWrapper } from 'enzyme';
+
 import Profile from '../Profile';
 
 describe('Tests for profile', () => {
