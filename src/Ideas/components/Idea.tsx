@@ -2,7 +2,7 @@ import React from 'react';
 import { Row, Col, Avatar } from 'antd';
 import { CardProps } from 'antd/lib/card';
 import { faComments, faThumbsUp, faShareSquare } from '@fortawesome/free-regular-svg-icons';
-import { withRouter, RouteComponentProps } from 'react-router-dom';
+import { withRouter, RouteComponentProps, Link } from 'react-router-dom';
 
 import { Idea as IdeaInterface } from '../../interfaces';
 import { Icon } from '../../Components';
@@ -27,7 +27,7 @@ const Idea: React.FC<Props> = (props) => {
           <Col span={22} className={styles.content}>
             <Row type="flex" className={styles.contentItems}>
               <Col className={styles.authorName} span={20}>
-                {idea.author.name}
+                <Link to="/ideahub/person/brian">{idea.author.name}</Link>
               </Col>
               <Col className={styles.ideaText}>{idea.text}</Col>
               {idea.image && (

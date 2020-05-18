@@ -41,3 +41,11 @@
 .ideaText {
   padding-bottom: 8px;
 }
+
+a {
+  color: $color-dark-blue-lighter;
+
+  &:hover {
+    color: $color-dark-blue-lighter;
+  }
+}
