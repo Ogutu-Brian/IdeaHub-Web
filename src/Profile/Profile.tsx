@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Row, Col } from 'antd';
 
 import { Ideas } from '../Ideas';
@@ -10,6 +10,8 @@ import styles from './Profile.module.scss';
 import { Button } from '../Components';
 
 const Profile: React.FC = () => {
+  const [onFollowButtonHover, handleFollowButtonHover] = useState<boolean>(false);
+
   return (
     <Row>
       <Row>
@@ -36,7 +38,13 @@ const Profile: React.FC = () => {
                     </div>
                   </Col>
                   <Col>
-                    <Button>Follow</Button>
+                    <Button
+                      type={onFollowButtonHover ? 'primary' : 'default'}
+                      onMouseEnter={() => handleFollowButtonHover(true)}
+                      onMouseLeave={() => handleFollowButtonHover(false)}
+                    >
+                      Follow
+                    </Button>
                   </Col>
                 </Row>
               </Col>
