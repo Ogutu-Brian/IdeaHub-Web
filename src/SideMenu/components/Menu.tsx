@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Menu as AntMenu } from 'antd';
+import { Menu as AntMenu, Row } from 'antd';
 import { faClock, faAddressCard } from '@fortawesome/free-regular-svg-icons';
 
 import MenuTitle from './MenuTitle';
@@ -19,12 +19,12 @@ const Menu: React.FC<Props> = (props) => {
 
   return (
     <div style={{ position: !isMobile ? 'fixed' : 'relative', display: collapsed ? 'none' : '' }}>
+      <Row className={styles.home}>IdeaHub</Row>
       <AntMenu
         theme="dark"
         selectedKeys={[selectedKey]}
         mode="inline"
         style={{ height: '100vh', width: !isMobile ? '200px' : '' }}
-        className={styles.menu}
       >
         <SubMenu title={<MenuTitle icon={faClock} label="My Ideas" />} key="sub1" className={styles.menu}>
           <AntMenu.Item key="1" onClick={() => selectOption('1')}>
