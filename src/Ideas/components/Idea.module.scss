@@ -5,10 +5,15 @@
   padding: 32px 8px 8px 8px;
 }
 
-.authorName {
-  color: $color-dark-blue-lighter;
-  cursor: pointer;
-  font-size: 14px;
+.contentItems {
+  padding-right: 8px;
+
+  .authorName {
+    color: $color-dark-blue-lighter;
+    cursor: pointer;
+    font-size: 14px;
+    padding-bottom: 8px;
+  }
 }
 
 .content {
@@ -17,4 +22,22 @@
   @include respond-to('xs-m') {
     padding-left: 8px;
   }
+}
+
+.footerItems {
+  width: 100%;
+  padding: 8px;
+}
+
+.ideaImageContainer {
+  padding-bottom: 8px;
+
+  .ideaImage {
+    width: 100%;
+    z-index: 0;
+  }
+}
+
+.ideaText {
+  padding-bottom: 8px;
 }
