@@ -3,11 +3,14 @@
 .overlayContainer {
   margin-top: 12px;
 
-  :global(a) {
-    cursor: pointer;
+  :global(.dropdown-item) {
+    color: $color-black;
+    background: $color-light;
 
-    &:hover {
-      background-color: $color-dark-blue-lighter;
+    &:hover,
+    &:active {
+      background: $color-dark-blue-lighter !important;
+      color: $color-light;
     }
   }
 }
