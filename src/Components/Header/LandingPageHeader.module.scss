@@ -2,8 +2,8 @@
 
 .header {
   border-bottom: solid 1px $color-light-gray;
-  padding: 16px;
-  padding-left: 160px;
+  padding: 16px 16px 16px 156px;
+  background: $color-light;
 
   @include respond-to('md-large') {
     padding-left: 8px;

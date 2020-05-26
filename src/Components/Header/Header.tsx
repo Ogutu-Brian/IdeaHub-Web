@@ -9,11 +9,12 @@ import { Button } from '../Button';
 import styles from './Header.module.scss';
 
 interface Props extends PageHeaderProps {
-  hasAccount: boolean;
+  hasAccount?: boolean;
+  hasHeaderButtons: boolean;
 }
 
 interface BtnProps extends ButtonProps {
-  hasAccount: boolean;
+  hasAccount?: boolean;
 }
 
 const HeaderButton: React.FC<BtnProps> = (props) => {
@@ -33,9 +34,15 @@ const HeaderButton: React.FC<BtnProps> = (props) => {
 };
 
 const Header: React.FC<Props> = (props) => {
-  const { hasAccount, ...restProps } = props;
+  const { hasAccount, hasHeaderButtons, ...restProps } = props;
 
-  return <PageHeader className={styles.header} extra={<HeaderButton hasAccount={hasAccount} />} {...restProps} />;
+  return (
+    <PageHeader
+      className={styles.header}
+      extra={hasHeaderButtons && <HeaderButton hasAccount={hasAccount} />}
+      {...restProps}
+    />
+  );
 };
 
 export default Header;

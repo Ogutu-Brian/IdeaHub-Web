@@ -12,47 +12,116 @@ $color-danger: #ff4d4f;
 $color-dark-light: #d9d9d9;
 $color-light-blue: #ceddfd;
 $color-black: #000000;
+$color-light-shadow: #ccc;
 
 // BREAKPOINTS FOR RESPONSIVENESS
-$breakpoints: ("lg-large": (max-width: 1440px),
-  "lg-medium": (max-width: 1320px),
-  "lg-small": (max-width: 1280px),
-  "lg": (max-width: 1200px),
-  "md-large": (max-width: 1024px),
-  "md": (max-width: 992px),
-  "sm": (max-width: 768px),
-  "xs": (max-width: 320px),
-  "xs-m": (max-width: 375px),
-  "xs-l": (max-width: 575px),
-  "xs-l-landscape": (min-width: 320px) and (max-width: 575px) and (orientation: landscape),
-  "min-sm-height": (min-height: 1024px),
-  "min-sm-medium": (min-width: 575px),
-  "min-sm": (min-width: 769px),
-  "min-sm-large": (min-width: 850px),
-  "min-md": (min-width: 992px),
-  "min-md-large": (min-width: 1024px),
-  "min-md-large-portrait": (min-width: 768px) and (max-width: 1024px) and (orientation: portrait),
-  "min-md-large-landscape": (min-width: 768px) and(max-width: 1024px) and(orientation: landscape),
-  "min-lg-small": (min-width: 1170px),
-  "min-lg": (min-width: 1200px),
-  "min-lg-medium-small": (min-width: 1300px),
-  "min-lg-medium": (min-width: 1320px),
-  "min-lg-large": (min-width: 1440px));
+$breakpoints: (
+  'lg-large': (
+    max-width: 1440px,
+  ),
+  'lg-medium': (
+    max-width: 1320px,
+  ),
+  'lg-small': (
+    max-width: 1280px,
+  ),
+  'lg': (
+    max-width: 1200px,
+  ),
+  'md-large': (
+    max-width: 1024px,
+  ),
+  'md': (
+    max-width: 992px,
+  ),
+  'sm': (
+    max-width: 768px,
+  ),
+  'xs': (
+    max-width: 320px,
+  ),
+  'xs-m': (
+    max-width: 375px,
+  ),
+  'xs-l': (
+    max-width: 575px,
+  ),
+  'xs-l-landscape': (
+    min-width: 320px,
+  )
+  and
+  (
+    max-width: 575px,
+  )
+  and
+  (
+    orientation: landscape,
+  ),
+  'min-sm-height': (
+    min-height: 1024px,
+  ),
+  'min-sm-medium': (
+    min-width: 575px,
+  ),
+  'min-sm': (
+    min-width: 769px,
+  ),
+  'min-sm-large': (
+    min-width: 850px,
+  ),
+  'min-md': (
+    min-width: 992px,
+  ),
+  'min-md-large': (
+    min-width: 1024px,
+  ),
+  'min-md-large-portrait': (
+    min-width: 768px,
+  )
+  and
+  (
+    max-width: 1024px,
+  )
+  and
+  (
+    orientation: portrait,
+  ),
+  'min-md-large-landscape': (
+    min-width: 768px,
+  )
+  and(
+    max-width: 1024px,
+  )
+  and(
+    orientation: landscape,
+  ),
+  'min-lg-small': (
+    min-width: 1170px,
+  ),
+  'min-lg': (
+    min-width: 1200px,
+  ),
+  'min-lg-medium-small': (
+    min-width: 1300px,
+  ),
+  'min-lg-medium': (
+    min-width: 1320px,
+  ),
+  'min-lg-large': (
+    min-width: 1440px,
+  ),
+);
 
 @mixin respond-to($breakpoint) {
   $raw-query: map-get($breakpoints, $breakpoint);
 
   @if $raw-query {
-    $query: if(type-of($raw-query)=="string",
-        unquote($raw-query),
-        inspect($raw-query));
+    $query: if(type-of($raw-query) == 'string', unquote($raw-query), inspect($raw-query));
 
     @media #{$query} {
       @content;
     }
-  }
-
-  @else {
+  } @else {
     @error 'No value found for `#{$breakpoint}`. '
     +'Please make sure it is defined in `$breakpoints` map.';
   }

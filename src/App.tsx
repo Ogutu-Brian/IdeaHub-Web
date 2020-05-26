@@ -6,6 +6,7 @@ import { Provider } from 'react-redux';
 import store from './store';
 import { LandingPage } from './LandingPage';
 import { Application } from './Application';
+import { CodeVerification } from './CodeVerification';
 
 import './App.scss';
 
@@ -16,6 +17,7 @@ const App: React.FC = () => (
         <Redirect exact from="/" to="/signup" />
         <Route component={() => <LandingPage hasAccount={false} />} exact path="/signup" />
         <Route component={() => <LandingPage hasAccount={true} />} exact path="/login" />
+        <Route component={CodeVerification} exact path="/verify" />
         <Route component={Application} path="/ideahub" />
       </Switch>
     </Router>

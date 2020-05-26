@@ -37,7 +37,7 @@ const LandingPage: React.FC<Props> = (props) => {
 
   return (
     <>
-      <LandingPageHeader hasAccount={hasAccount} />
+      <LandingPageHeader hasAccount={hasAccount} hasHeaderButtons={true} />
       <Row className={styles.landingPage}>
         <Row type="flex" className={styles.contentSection}>
           <Col lg={12} md={12} sm={24}>
