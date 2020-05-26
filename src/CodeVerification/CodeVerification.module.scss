@@ -55,23 +55,11 @@
   }
 }
 
-@mixin button {
-  background: #ebedf0;
-  border: none !important;
-  font-size: 12px;
-
-  &:hover,
-  &:active,
-  &:focus {
-    background: #ebedf0;
-  }
-}
-
 .button {
   @include button();
 }
 
 .disabledButton {
   @include button();
-  color: #bec3c9 !important;
+  color: $color-dark-grey-lighter !important;
 }

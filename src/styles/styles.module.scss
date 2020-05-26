@@ -13,6 +13,8 @@ $color-dark-light: #d9d9d9;
 $color-light-blue: #ceddfd;
 $color-black: #000000;
 $color-light-shadow: #ccc;
+$color-dark-grey: #ebedf0;
+$color-dark-grey-lighter: #bec3c9;
 
 // BREAKPOINTS FOR RESPONSIVENESS
 $breakpoints: (
@@ -111,6 +113,18 @@ $breakpoints: (
     min-width: 1440px,
   ),
 );
+
+@mixin button {
+  background: $color-dark-grey;
+  border: none !important;
+  font-size: 12px;
+
+  &:hover,
+  &:active,
+  &:focus {
+    background: $color-dark-grey;
+  }
+}
 
 @mixin respond-to($breakpoint) {
   $raw-query: map-get($breakpoints, $breakpoint);

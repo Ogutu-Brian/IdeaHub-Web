@@ -1,15 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, ChangeEvent } from 'react';
 import { Row, Col } from 'antd';
 
 import { LandingPageHeader, Input, Button } from '../Components';
+import { Modal } from './Components';
 
 import styles from './CodeVerification.module.scss';
 
 const CodeVerification: React.FC = () => {
   const [verificationCode, setVerificationCode] = useState<string>('');
+  const [modalVisible, setModalVisible] = useState<boolean>(false);
+
+  const onChange = (e: ChangeEvent<HTMLInputElement>): void => {
+    e.persist();
+    setVerificationCode(e.target.value);
+  };
 
   return (
     <Row className={styles.container}>
+      <Modal visible={modalVisible} onCancel={() => setModalVisible(false)} onOk={() => setModalVisible(false)} />
       <LandingPageHeader hasHeaderButtons={false} hasAccount={false} />
       <Row type="flex" className={styles.codeVerification} justify="space-around">
         <Row className={styles.card}>
@@ -20,7 +28,7 @@ const CodeVerification: React.FC = () => {
           </Row>
           <Row className={styles.inputRow} type="flex">
             <Col lg={8}>
-              <Input placeholder="Enter code" />
+              <Input placeholder="Enter code" onChange={onChange} />
             </Col>
           </Row>
           <Row className={styles.resendMail}>Send email again</Row>
@@ -28,7 +36,7 @@ const CodeVerification: React.FC = () => {
             <Col>
               <Row type="flex" gutter={8} style={{ flexWrap: 'nowrap' }}>
                 <Col className={styles.buttonColumn}>
-                  <Button type="default" className={styles.button}>
+                  <Button type="default" className={styles.button} onClick={() => setModalVisible(true)}>
                     Update contact info
                   </Button>
                 </Col>
