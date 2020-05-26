@@ -9,6 +9,7 @@ import { signUpUser } from '../services';
 
 import styles from './LandingPage.module.scss';
 import { SignUpData } from '../services/authentication/interfaces';
+import { GroupSvg } from '../assets';
 
 interface Props {
   hasAccount: boolean;
@@ -44,6 +45,13 @@ const LandingPage: React.FC<Props> = (props) => {
             <Row className={styles.information}>
               <Col className={styles.title}>POOL RESOURCES</Col>
               <Col className={styles.text}>Pool human and monetary resources at your comfort</Col>
+              <Col>
+                <Row type="flex">
+                  <Col>
+                    <img className={styles.groupSvg} src={GroupSvg} alt="Group Svg" />
+                  </Col>
+                </Row>
+              </Col>
             </Row>
           </Col>
           <Col span={isMobile ? 24 : 12}>
