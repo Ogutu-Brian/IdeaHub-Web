@@ -3,6 +3,7 @@ import { blankTestAction, successSignUpAction, signUpErrorAction } from '../../.
 import { initialState } from '../signUp';
 import { SignUp } from '../actions/interfaces';
 import { SIGN_UP_STAGES } from '../../../utils';
+import { signUpSuccess, signUpError } from '../actions';
 
 describe('Tests for signUp reducer', () => {
   it('tests for initial sign up state', () => {
@@ -12,7 +13,7 @@ describe('Tests for signUp reducer', () => {
   });
 
   it('tests for success case', () => {
-    const result: SignUp = signUp(undefined, successSignUpAction);
+    const result: SignUp = signUp(undefined, signUpSuccess(successSignUpAction.payload));
 
     expect(result).toEqual({
       ...successSignUpAction.payload,
@@ -21,7 +22,7 @@ describe('Tests for signUp reducer', () => {
   });
 
   it('tests for error case', () => {
-    const result: SignUp = signUp(undefined, signUpErrorAction);
+    const result: SignUp = signUp(undefined, signUpError(signUpErrorAction.payload));
 
     expect(result).toEqual({
       error: signUpErrorAction.payload,

@@ -5,3 +5,8 @@ export interface SignUp {
   stage: string;
   error?: any;
 }
+
+export interface SignUpAction {
+  type: string;
+  payload: SignUp;
+}
