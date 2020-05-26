@@ -1,6 +1,7 @@
 import { Profile } from '../store/profile/actions/interfaces';
 import { Action } from '../store/interfaces';
 import { USER_DETAILS } from '../store/profile/actionTypes';
+import { SIGN_UP_SUCCESS, SIGN_UP_ERROR } from '../store/signUp/actionTypes';
 
 export const MockData = {
   Ideas: [...Array(100).keys()].map((item) => ({
@@ -44,6 +45,18 @@ export const userDetailsAction: Action = {
   payload: testUser,
 };
 
+export const successSignUpAction: Action = {
+  type: SIGN_UP_SUCCESS,
+  payload: {
+    firstName: 'test name',
+    lastName: 'test name',
+  },
+};
+
+export const signUpErrorAction: Action = {
+  type: SIGN_UP_ERROR,
+  payload: {},
+};
 export const placeHolderImage: string =
   'https://res.cloudinary.com/authorsheaven/image/upload/v1571160865/57595_1521027489_qlbdng.jpg';
 

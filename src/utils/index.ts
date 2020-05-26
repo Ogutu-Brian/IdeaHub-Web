@@ -1,3 +1,3 @@
-import { DeviceMeasures } from "./constants";
+import { DeviceMeasures, SIGN_UP_STAGES } from './constants';
 
-export { DeviceMeasures };
+export { DeviceMeasures, SIGN_UP_STAGES };
