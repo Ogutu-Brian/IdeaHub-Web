@@ -1,26 +1,43 @@
-import React, { useState } from 'react';
+import React, { useState, ChangeEvent } from 'react';
 import { Row, Col } from 'antd';
 import { useMedia } from 'react-use';
-import { Link } from 'react-router-dom';
 
 import { Button } from '../Components';
 import { DeviceMeasures } from '../utils';
-import { Header, Input, PasswordInput } from '../Components';
+import { Input, PasswordInput, LandingPageHeader } from '../Components';
+import { signUpUser } from '../services';
 
 import styles from './LandingPage.module.scss';
+import { SignUpData } from '../services/authentication/interfaces';
 
-const LandingPage: React.FC = () => {
+interface Props {
+  hasAccount: boolean;
+}
+
+const LandingPage: React.FC<Props> = (props) => {
+  const { hasAccount } = props;
   const isMobile: boolean = useMedia(DeviceMeasures.MOBILE);
-  const [hasAccount, setHasAccount] = useState<boolean>(false);
+  const [signUpData, setSignUpData] = useState<any>();
 
-  const joinNow = (): void => setHasAccount(false);
-  const signIn = (): void => setHasAccount(true);
+  const onChange = (e: ChangeEvent<HTMLInputElement>): void => {
+    e.persist();
+    setSignUpData((signUpData: SignUpData) =>
+      setSignUpData({
+        ...signUpData,
+        [e.target.name]: e.target.value,
+      }),
+    );
+  };
+
+  const signUp = (): void => {
+    signUpUser(signUpData).then((response) => {});
+  };
+
+  const logIn = (): void => {};
 
   return (
     <>
-      <Row className={styles.header}>
-        <Header title="IdeaHub" joinNow={joinNow} signIn={signIn} />
-      </Row>
+      <LandingPageHeader hasAccount={hasAccount} />
       <Row className={styles.landingPage}>
         <Row type="flex" className={styles.contentSection}>
           <Col lg={12} md={12} sm={24}>
@@ -33,26 +50,29 @@ const LandingPage: React.FC = () => {
             <Row className={isMobile ? '' : styles.form}>
               {!hasAccount && (
                 <Col style={{ marginBottom: 16 }}>
-                  <Input placeholder="Username" />
+                  <Input placeholder="First name" name="firstName" onChange={onChange} />
+                </Col>
+              )}
+              {!hasAccount && (
+                <Col style={{ marginBottom: 16 }}>
+                  <Input placeholder="Last name" name="lastName" onChange={onChange} />
                 </Col>
               )}
               <Col style={{ marginBottom: 16 }}>
-                <Input placeholder="Email" />
+                <Input placeholder="Email" name="email" onChange={onChange} />
               </Col>
               {!hasAccount && (
                 <Col style={{ marginBottom: 16 }}>
-                  <PasswordInput placeholder="Password" />
+                  <PasswordInput placeholder="Password" name="password" onChange={onChange} />
                 </Col>
               )}
               <Col style={{ marginBottom: 40 }}>
-                <PasswordInput placeholder="Confirm password" />
+                <PasswordInput placeholder="Confirm password" name="confirmPassword" onChange={onChange} />
               </Col>
               <Col>
-                <Link to="/ideahub">
-                  <Button style={{ width: '100%' }} type="primary" size="large">
-                    {hasAccount ? 'Sign In' : 'Join now'}
-                  </Button>
-                </Link>
+                <Button style={{ width: '100%' }} type="primary" size="large" onClick={hasAccount ? logIn : signUp}>
+                  {hasAccount ? 'Log In' : 'Sign Up'}
+                </Button>
               </Col>
             </Row>
           </Col>

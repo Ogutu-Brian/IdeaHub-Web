@@ -1,0 +1,11 @@
+@import '../../styles/styles.module.scss';
+
+.header {
+  border-bottom: solid 1px $color-light-gray;
+  padding: 16px;
+  padding-left: 160px;
+
+  @include respond-to('md-large') {
+    padding-left: 8px;
+  }
+}

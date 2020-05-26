@@ -1,34 +1,41 @@
-import React from "react";
-import { PageHeader, Row, Col } from "antd";
+import React from 'react';
+import { PageHeader, Row, Col } from 'antd';
+import { PageHeaderProps } from 'antd/lib/page-header';
+import { ButtonProps } from 'antd/lib/button';
+import { Link } from 'react-router-dom';
 
-import { Button } from "../Button";
-import { Props, JoinAndSignInProps } from "./interfaces";
+import { Button } from '../Button';
 
-import styles from "./Header.module.scss";
+import styles from './Header.module.scss';
 
-const JoinAndSignInButtons: React.FC<JoinAndSignInProps> = props => (
-  <Row type="flex" gutter={24}>
-    <Col>
-      <Button size="large" onClick={props.joinNow}>
-        Join now
-      </Button>
-    </Col>
-    <Col>
-      <Button type="primary" size="large" onClick={props.signIn}>
-        Sign In
-      </Button>
-    </Col>
-  </Row>
-);
+interface Props extends PageHeaderProps {
+  hasAccount: boolean;
+}
 
-const Header: React.FC<Props> = props => (
-  <PageHeader
-    className={styles.header}
-    {...props}
-    extra={
-      <JoinAndSignInButtons joinNow={props.joinNow} signIn={props.signIn} />
-    }
-  />
-);
+interface BtnProps extends ButtonProps {
+  hasAccount: boolean;
+}
+
+const HeaderButton: React.FC<BtnProps> = (props) => {
+  const { hasAccount, ...restProps } = props;
+
+  return (
+    <Row type="flex">
+      <Col>
+        <Link to={hasAccount ? '/signup' : '/login'}>
+          <Button size="large" {...restProps}>
+            {hasAccount ? 'Sign Up' : 'Log In'}
+          </Button>
+        </Link>
+      </Col>
+    </Row>
+  );
+};
+
+const Header: React.FC<Props> = (props) => {
+  const { hasAccount, ...restProps } = props;
+
+  return <PageHeader className={styles.header} {...restProps} extra={<HeaderButton hasAccount={hasAccount} />} />;
+};
 
 export default Header;
