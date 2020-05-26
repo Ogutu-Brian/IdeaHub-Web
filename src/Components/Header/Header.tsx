@@ -35,7 +35,7 @@ const HeaderButton: React.FC<BtnProps> = (props) => {
 const Header: React.FC<Props> = (props) => {
   const { hasAccount, ...restProps } = props;
 
-  return <PageHeader className={styles.header} {...restProps} extra={<HeaderButton hasAccount={hasAccount} />} />;
+  return <PageHeader className={styles.header} extra={<HeaderButton hasAccount={hasAccount} />} {...restProps} />;
 };
 
 export default Header;
