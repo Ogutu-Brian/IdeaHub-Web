@@ -1,9 +1,10 @@
-@import "../styles/styles.module.scss";
+@import '../styles/styles.module.scss';
 
 .landingPage {
   background: $color-light;
-  height: 100vh;
+  min-height: 80vh;
   width: 100%;
+  padding-bottom: 16px;
 
   .contentSection {
     padding-top: 32px;
@@ -23,7 +24,7 @@
       }
     }
 
-    @include respond-to("md-large") {
+    @include respond-to('md-large') {
       padding-left: 8px;
       padding-right: 8px;
     }
@@ -34,12 +35,12 @@
     padding-left: 8rem;
     padding-right: 32px;
 
-    @include respond-to("xs-m") {
+    @include respond-to('xs-m') {
       padding-left: 8px;
     }
   }
 
-  @include respond-to("md-large") {
+  @include respond-to('md-large') {
     padding-left: 16px;
   }
 }
@@ -49,7 +50,24 @@
   padding: 16px;
   padding-left: 160px;
 
-  @include respond-to("md-large") {
+  @include respond-to('md-large') {
     padding-left: 8px;
+  }
+}
+
+.groupSvg {
+  width: 100%;
+  height: 28rem;
+
+  @include respond-to('xs-l') {
+    height: 12rem;
+  }
+}
+
+.button {
+  width: 100%;
+
+  &:global(.ant-btn-loading) {
+    width: 100%;
   }
 }

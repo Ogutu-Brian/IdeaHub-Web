@@ -1,0 +1,10 @@
+@import '../../styles/styles.module.scss';
+
+.button {
+  @include button();
+}
+
+.disabledButton {
+  @include button();
+  color: $color-dark-grey-lighter !important;
+}

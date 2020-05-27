@@ -1,18 +1,23 @@
-import React from "react";
-import { mount, ReactWrapper } from "enzyme";
+import React from 'react';
+import { mount, ReactWrapper } from 'enzyme';
+import { BrowserRouter as Router } from 'react-router-dom';
 
-import Header from "../Header";
-import { Props } from "../interfaces";
+import Header from '../Header';
 
-describe("header Tests", () => {
-  const props: Props = {
-    title: "Example Page",
+describe('header Tests', () => {
+  const props = {
+    title: 'Example Page',
     joinNow: jest.fn(),
-    signIn: jest.fn()
+    signIn: jest.fn(),
+    hasAccount: false,
   };
 
-  const wrapper: ReactWrapper = mount(<Header {...props} />);
-  it("Should render header without crushing", () => {
+  const wrapper: ReactWrapper = mount(
+    <Router>
+      <Header {...props} />
+    </Router>,
+  );
+  it('Should render header without crushing', () => {
     expect(wrapper).toMatchSnapshot();
   });
 });

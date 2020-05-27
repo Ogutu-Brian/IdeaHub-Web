@@ -1,0 +1,64 @@
+@import '../styles/styles.module.scss';
+
+.container {
+  background: $color-light-gray;
+  min-height: 100vh;
+
+  .codeVerification {
+    padding-top: 32px;
+    padding-bottom: 32px;
+
+    .card {
+      background: $color-light;
+      border-radius: 8px;
+      margin-left: 16px;
+      margin-right: 16px;
+      box-shadow: 2px 2px 2px 2px $color-light-shadow;
+
+      .title {
+        font-weight: bold;
+        border-bottom: 2px solid $color-light-gray;
+        padding: 16px;
+        color: $color-dark-blue-lighter;
+      }
+
+      .text {
+        padding: 16px 16px 0px 16px;
+        color: $color-dark-blue-lighter;
+
+        .mail {
+          font-weight: bold;
+        }
+      }
+    }
+
+    .inputRow {
+      padding: 0px 16px 16px 16px;
+    }
+
+    .resendMail {
+      cursor: pointer;
+      padding: 16px;
+      color: dodgerblue;
+      font-size: 16px;
+    }
+
+    .buttonsRow {
+      padding: 16px;
+      border-top: 2px solid $color-light-gray;
+
+      .buttonColumn {
+        padding: 8px;
+      }
+    }
+  }
+}
+
+.button {
+  @include button();
+}
+
+.disabledButton {
+  @include button();
+  color: $color-dark-grey-lighter !important;
+}

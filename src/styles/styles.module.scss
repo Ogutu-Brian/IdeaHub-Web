@@ -12,6 +12,9 @@ $color-danger: #ff4d4f;
 $color-dark-light: #d9d9d9;
 $color-light-blue: #ceddfd;
 $color-black: #000000;
+$color-light-shadow: #ccc;
+$color-dark-grey: #ebedf0;
+$color-dark-grey-lighter: #bec3c9;
 
 // BREAKPOINTS FOR RESPONSIVENESS
 $breakpoints: ("lg-large": (max-width: 1440px),
@@ -39,13 +42,23 @@ $breakpoints: ("lg-large": (max-width: 1440px),
   "min-lg-medium": (min-width: 1320px),
   "min-lg-large": (min-width: 1440px));
 
+@mixin button {
+  background: $color-dark-grey;
+  border: none !important;
+  font-size: 12px;
+
+  &:hover,
+  &:active,
+  &:focus {
+    background: $color-dark-grey;
+  }
+}
+
 @mixin respond-to($breakpoint) {
   $raw-query: map-get($breakpoints, $breakpoint);
 
   @if $raw-query {
-    $query: if(type-of($raw-query)=="string",
-        unquote($raw-query),
-        inspect($raw-query));
+    $query: if(type-of($raw-query)=='string', unquote($raw-query), inspect($raw-query));
 
     @media #{$query} {
       @content;
