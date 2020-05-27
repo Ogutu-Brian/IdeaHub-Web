@@ -66,4 +66,10 @@ describe('tests for all fields filled', () => {
 
     expect(result).toEqual(false);
   });
+
+  it('should test for missing fields in object', () => {
+    const result: boolean = allFieldsFilled(['firstName', 'lastName'], { fistName: 'test first name' });
+
+    expect(result).toEqual(false);
+  });
 });

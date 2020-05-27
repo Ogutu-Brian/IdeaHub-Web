@@ -1,5 +1,3 @@
-import { get } from 'lodash';
-
 export const isEmptyObject = (objectItem: any): boolean => Object.keys(objectItem).length > 0;
 
 export const allFieldsEmpty = (objectItem: any): boolean => {
