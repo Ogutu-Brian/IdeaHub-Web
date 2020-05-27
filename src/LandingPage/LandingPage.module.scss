@@ -66,4 +66,8 @@
 
 .button {
   width: 100%;
+
+  &:global(.ant-btn-loading) {
+    width: 100%;
+  }
 }
