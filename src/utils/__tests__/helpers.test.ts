@@ -1,5 +1,4 @@
-import { allFieldsEmpty, allFieldsFilled } from '../helpers';
-import { get } from 'lodash';
+import { allFieldsEmpty, allFieldsFilled, isEmptyObject } from '../helpers';
 
 describe('Tests for all fields empty', () => {
   it('tests for an empty object', () => {
@@ -69,6 +68,22 @@ describe('tests for all fields filled', () => {
 
   it('should test for missing fields in object', () => {
     const result: boolean = allFieldsFilled(['firstName', 'lastName'], { fistName: 'test first name' });
+
+    expect(result).toEqual(false);
+  });
+});
+
+describe('tests for empty object util', () => {
+  it('tests for empty object', () => {
+    const result: boolean = isEmptyObject({});
+
+    expect(result).toEqual(true);
+  });
+
+  it('tests for non empty object', () => {
+    const result: boolean = isEmptyObject({
+      firstName: 'testName',
+    });
 
     expect(result).toEqual(false);
   });

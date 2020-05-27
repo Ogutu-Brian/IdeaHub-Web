@@ -8,7 +8,7 @@ import { get } from 'lodash';
 import emailValidator from 'email-validator';
 
 import { Button } from '../Components';
-import { DeviceMeasures, SIGN_UP_STAGES, allFieldsEmpty } from '../utils';
+import { DeviceMeasures, SIGN_UP_STAGES, allFieldsEmpty, allFieldsFilled } from '../utils';
 import { Input, PasswordInput, LandingPageHeader } from '../Components';
 import { signUpUser } from '../services';
 import { FieldsData } from '../services/authentication/interfaces';
@@ -43,10 +43,14 @@ const LandingPage: React.FC<Props> = (props) => {
   }, [signUpStore, history]);
 
   useEffect(() => {
-    if (Object.keys(fieldErrors).length) {
-      setDisableSubmitButton(!allFieldsEmpty(fieldErrors));
-    }
-  }, [fieldErrors]);
+    const formFilled: boolean = allFieldsFilled(
+      !hasAccount ? ['firstName', 'lastName', 'email', 'password', 'confirmPassword'] : ['email', 'password'],
+      fieldsData,
+    );
+    const nillErrors: boolean = allFieldsEmpty(fieldErrors);
+
+    setDisableSubmitButton(!(formFilled && nillErrors));
+  }, [fieldsData, fieldErrors, hasAccount]);
 
   const onChange = (e: ChangeEvent<HTMLInputElement>): void => {
     e.persist();
@@ -68,6 +72,8 @@ const LandingPage: React.FC<Props> = (props) => {
 
     signUpUser(fieldsData)
       .then((response): void => {
+        setLoadingButton(false);
+
         signUpUserSuccess({
           firstName: fieldsData.firstName,
           lastName: fieldsData.lastName,
@@ -81,8 +87,51 @@ const LandingPage: React.FC<Props> = (props) => {
       });
   };
 
-  const onBlur = (fieldName: string, optionalName?: string) => {
-    if (fieldName === 'email') {
+  const handlePasswordFields = (fieldName: 'password' | 'confirmPassword'): void => {
+    const confirmPassword: string | undefined = fieldsData.confirmPassword;
+    const password: string | undefined = fieldsData.password;
+    const confirmPasswordMessage: string = 'Password and confirm password do not match';
+
+    switch (fieldName) {
+      case 'password':
+        if (!password) {
+          setFieldErrors((errors: any) => ({
+            ...errors,
+            password: 'Please enter password',
+          }));
+        } else if (!confirmPassword) {
+          setFieldErrors((errors: any) => ({
+            ...errors,
+            confirmPassword: 'Please confirm password',
+          }));
+        } else if (confirmPassword && confirmPassword !== password) {
+          setFieldErrors((errors: any) => ({
+            ...errors,
+            confirmPassword: confirmPasswordMessage,
+          }));
+        }
+        return;
+      case 'confirmPassword':
+        if (!confirmPassword) {
+          setFieldErrors((errors: any) => ({
+            ...errors,
+            confirmPassword: 'Please confirm password',
+          }));
+        }
+        if (confirmPassword && confirmPassword !== password) {
+          setFieldErrors((errors: any) => ({
+            ...errors,
+            confirmPassword: confirmPasswordMessage,
+          }));
+        }
+        return;
+    }
+  };
+
+  const onBlur = (fieldName: string, optionalName?: string): void => {
+    if (!hasAccount && (fieldName === 'confirmPassword' || fieldName === 'password')) {
+      handlePasswordFields(fieldName);
+    } else if (fieldName === 'email') {
       const email: string | undefined = fieldsData.email;
 
       if (email && emailValidator.validate(email)) {
@@ -161,31 +210,32 @@ const LandingPage: React.FC<Props> = (props) => {
                     <Input placeholder="Email" name="email" onChange={onChange} onBlur={() => onBlur('email')} />
                   </Form.Item>
                 </Col>
+
+                <Col style={{ marginBottom: 16 }}>
+                  <Form.Item validateStatus={fieldErrors.password ? 'error' : ''} help={fieldErrors.password}>
+                    <PasswordInput
+                      placeholder="Password"
+                      name="password"
+                      onChange={onChange}
+                      onBlur={() => onBlur('password')}
+                    />
+                  </Form.Item>
+                </Col>
                 {!hasAccount && (
-                  <Col style={{ marginBottom: 16 }}>
-                    <Form.Item validateStatus={fieldErrors.password ? 'error' : ''} help={fieldErrors.password}>
+                  <Col style={{ marginBottom: 40 }}>
+                    <Form.Item
+                      validateStatus={fieldErrors.confirmPassword ? 'error' : ''}
+                      help={fieldErrors.confirmPassword}
+                    >
                       <PasswordInput
-                        placeholder="Password"
-                        name="password"
+                        placeholder="Confirm password"
+                        name="confirmPassword"
                         onChange={onChange}
-                        onBlur={() => onBlur('password')}
+                        onBlur={() => onBlur('confirmPassword', 'confirm password')}
                       />
                     </Form.Item>
                   </Col>
                 )}
-                <Col style={{ marginBottom: 40 }}>
-                  <Form.Item
-                    validateStatus={fieldErrors.confirmPassword ? 'error' : ''}
-                    help={fieldErrors.confirmPassword}
-                  >
-                    <PasswordInput
-                      placeholder="Confirm password"
-                      name="confirmPassword"
-                      onChange={onChange}
-                      onBlur={() => onBlur('confirmPassword', 'confirm password')}
-                    />
-                  </Form.Item>
-                </Col>
                 <Col>
                   <Button
                     className={styles.button}

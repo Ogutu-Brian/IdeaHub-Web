@@ -1,4 +1,4 @@
-export const isEmptyObject = (objectItem: any): boolean => Object.keys(objectItem).length > 0;
+export const isEmptyObject = (objectItem: any): boolean => Object.keys(objectItem).length === 0;
 
 export const allFieldsEmpty = (objectItem: any): boolean => {
   const objectKeys: string[] = Object.keys(objectItem);
