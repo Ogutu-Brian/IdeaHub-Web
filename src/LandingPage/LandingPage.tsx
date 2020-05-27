@@ -1,37 +1,112 @@
-import React, { useState, ChangeEvent } from 'react';
-import { Row, Col } from 'antd';
+import React, { useState, ChangeEvent, Dispatch, useEffect } from 'react';
+import { Row, Col, Form } from 'antd';
 import { useMedia } from 'react-use';
+import { connect } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import humps from 'humps';
+import { get } from 'lodash';
+import emailValidator from 'email-validator';
 
 import { Button } from '../Components';
-import { DeviceMeasures } from '../utils';
+import { DeviceMeasures, SIGN_UP_STAGES, allFieldsEmpty } from '../utils';
 import { Input, PasswordInput, LandingPageHeader } from '../Components';
 import { signUpUser } from '../services';
+import { FieldsData } from '../services/authentication/interfaces';
+import { GroupSvg } from '../assets';
+import { Store } from '../store/interfaces';
+import { SignUp } from '../store/signUp/actions/interfaces';
+import { signUpSuccess, signUpError } from '../store/signUp/actions';
 
 import styles from './LandingPage.module.scss';
-import { SignUpData } from '../services/authentication/interfaces';
-import { GroupSvg } from '../assets';
 
 interface Props {
   hasAccount: boolean;
+  signUpUserSuccess: (data: SignUp) => void;
+  signUpStore: SignUp;
+  signUpUserError: (error: any) => void;
 }
 
 const LandingPage: React.FC<Props> = (props) => {
-  const { hasAccount } = props;
+  const { hasAccount, signUpUserSuccess, signUpStore, signUpUserError } = props;
   const isMobile: boolean = useMedia(DeviceMeasures.MOBILE);
-  const [signUpData, setSignUpData] = useState<any>();
+  const [loadingButton, setLoadingButton] = useState<boolean>(false);
+  const [fieldsData, setFieldsData] = useState<FieldsData>({});
+  let history = useHistory();
+  const verifyPageRoute: string = '/verify';
+  const [fieldErrors, setFieldErrors] = useState<FieldsData>({});
+  const [disableSubmitButton, setDisableSubmitButton] = useState<boolean>(true);
+
+  useEffect(() => {
+    if (signUpStore.stage === SIGN_UP_STAGES.VERIFY) {
+      history.push(verifyPageRoute);
+    }
+  }, [signUpStore, history]);
+
+  useEffect(() => {
+    if (Object.keys(fieldErrors).length) {
+      setDisableSubmitButton(!allFieldsEmpty(fieldErrors));
+    }
+  }, [fieldErrors]);
 
   const onChange = (e: ChangeEvent<HTMLInputElement>): void => {
     e.persist();
-    setSignUpData((signUpData: SignUpData) =>
-      setSignUpData({
-        ...signUpData,
-        [e.target.name]: e.target.value,
-      }),
-    );
+    if (e.target.value.length) {
+      setFieldErrors((errors: FieldsData) => ({
+        ...errors,
+        [e.target.name]: '',
+      }));
+    }
+
+    setFieldsData((fieldsData: FieldsData) => ({
+      ...fieldsData,
+      [e.target.name]: e.target.value,
+    }));
   };
 
   const signUp = (): void => {
-    signUpUser(signUpData).then((response) => {});
+    setLoadingButton(true);
+
+    signUpUser(fieldsData)
+      .then((response): void => {
+        signUpUserSuccess({
+          firstName: fieldsData.firstName,
+          lastName: fieldsData.lastName,
+          email: fieldsData.email,
+          stage: SIGN_UP_STAGES.VERIFY,
+        });
+      })
+      .catch((error) => {
+        setLoadingButton(false);
+        signUpUserError(humps.camelizeKeys(error.response.data));
+      });
+  };
+
+  const onBlur = (fieldName: string, optionalName?: string) => {
+    if (fieldName === 'email') {
+      const email: string | undefined = fieldsData.email;
+
+      if (email && emailValidator.validate(email)) {
+        setFieldErrors((errors: any) => ({
+          ...errors,
+          email: '',
+        }));
+      } else {
+        setFieldErrors((errors: any) => ({
+          ...errors,
+          email: 'Please enter a valid email',
+        }));
+      }
+    } else if (!get(fieldsData, fieldName)) {
+      setFieldErrors((errors: FieldsData) => ({
+        ...errors,
+        [fieldName]: `Please enter ${!optionalName ? fieldName.toLowerCase() : optionalName.toLowerCase()}`,
+      }));
+    } else {
+      setFieldErrors((errors: FieldsData) => ({
+        ...errors,
+        [fieldName]: '',
+      }));
+    }
   };
 
   const logIn = (): void => {};
@@ -56,32 +131,74 @@ const LandingPage: React.FC<Props> = (props) => {
           </Col>
           <Col span={isMobile ? 24 : 12}>
             <Row className={isMobile ? '' : styles.form}>
-              {!hasAccount && (
+              <Form>
+                {!hasAccount && (
+                  <Col style={{ marginBottom: 16 }}>
+                    <Form.Item validateStatus={fieldErrors.firstName ? 'error' : ''} help={fieldErrors.firstName}>
+                      <Input
+                        placeholder="First name"
+                        name="firstName"
+                        onChange={onChange}
+                        onBlur={() => onBlur('firstName', 'first name')}
+                      />
+                    </Form.Item>
+                  </Col>
+                )}
+                {!hasAccount && (
+                  <Col style={{ marginBottom: 16 }}>
+                    <Form.Item validateStatus={fieldErrors.lastName ? 'error' : ''} help={fieldErrors.lastName}>
+                      <Input
+                        placeholder="Last name"
+                        name="lastName"
+                        onChange={onChange}
+                        onBlur={() => onBlur('lastName', 'last name')}
+                      />
+                    </Form.Item>
+                  </Col>
+                )}
                 <Col style={{ marginBottom: 16 }}>
-                  <Input placeholder="First name" name="firstName" onChange={onChange} />
+                  <Form.Item validateStatus={fieldErrors.email ? 'error' : ''} help={fieldErrors.email}>
+                    <Input placeholder="Email" name="email" onChange={onChange} onBlur={() => onBlur('email')} />
+                  </Form.Item>
                 </Col>
-              )}
-              {!hasAccount && (
-                <Col style={{ marginBottom: 16 }}>
-                  <Input placeholder="Last name" name="lastName" onChange={onChange} />
+                {!hasAccount && (
+                  <Col style={{ marginBottom: 16 }}>
+                    <Form.Item validateStatus={fieldErrors.password ? 'error' : ''} help={fieldErrors.password}>
+                      <PasswordInput
+                        placeholder="Password"
+                        name="password"
+                        onChange={onChange}
+                        onBlur={() => onBlur('password')}
+                      />
+                    </Form.Item>
+                  </Col>
+                )}
+                <Col style={{ marginBottom: 40 }}>
+                  <Form.Item
+                    validateStatus={fieldErrors.confirmPassword ? 'error' : ''}
+                    help={fieldErrors.confirmPassword}
+                  >
+                    <PasswordInput
+                      placeholder="Confirm password"
+                      name="confirmPassword"
+                      onChange={onChange}
+                      onBlur={() => onBlur('confirmPassword', 'confirm password')}
+                    />
+                  </Form.Item>
                 </Col>
-              )}
-              <Col style={{ marginBottom: 16 }}>
-                <Input placeholder="Email" name="email" onChange={onChange} />
-              </Col>
-              {!hasAccount && (
-                <Col style={{ marginBottom: 16 }}>
-                  <PasswordInput placeholder="Password" name="password" onChange={onChange} />
+                <Col>
+                  <Button
+                    className={styles.button}
+                    type="primary"
+                    size="large"
+                    onClick={hasAccount ? logIn : signUp}
+                    loading={loadingButton}
+                    disabled={disableSubmitButton}
+                  >
+                    {!loadingButton ? (hasAccount ? 'Log In' : 'Sign Up') : ''}
+                  </Button>
                 </Col>
-              )}
-              <Col style={{ marginBottom: 40 }}>
-                <PasswordInput placeholder="Confirm password" name="confirmPassword" onChange={onChange} />
-              </Col>
-              <Col>
-                <Button style={{ width: '100%' }} type="primary" size="large" onClick={hasAccount ? logIn : signUp}>
-                  {hasAccount ? 'Log In' : 'Sign Up'}
-                </Button>
-              </Col>
+              </Form>
             </Row>
           </Col>
         </Row>
@@ -90,4 +207,13 @@ const LandingPage: React.FC<Props> = (props) => {
   );
 };
 
-export default LandingPage;
+const mapStateToProps = (state: Store) => ({
+  signUpStore: state.signUp,
+});
+
+const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
+  signUpUserSuccess: (data: SignUp): void => dispatch(signUpSuccess(data)),
+  signUpUserError: (error: any): void => dispatch(signUpError(error)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(LandingPage);

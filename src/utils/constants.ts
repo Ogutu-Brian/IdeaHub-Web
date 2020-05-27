@@ -5,4 +5,5 @@ export enum DeviceMeasures {
 export enum SIGN_UP_STAGES {
   VERIFY = 'verify',
   ERROR = 'error',
+  INITIAL = 'initial',
 }

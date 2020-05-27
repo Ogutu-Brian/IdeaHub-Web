@@ -7,7 +7,7 @@ export const initialState: SignUp = {
   firstName: '',
   lastName: '',
   email: '',
-  stage: 'initial',
+  stage: SIGN_UP_STAGES.INITIAL,
 };
 
 const signUp = (state: SignUp = initialState, action: Action): SignUp => {

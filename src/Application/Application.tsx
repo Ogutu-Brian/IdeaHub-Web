@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Dispatch } from 'react';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import { Layout } from 'antd';
 import { useMedia } from 'react-use';
@@ -66,7 +66,7 @@ const mapStateToProps = (state: Store) => ({
   profile: state.profile,
 });
 
-const mapDispatchToProps = (dispatch: any) => ({
+const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
   fetchProfile: (profile: Profile): void => dispatch(fetchUserProfile(profile)),
 });
 
