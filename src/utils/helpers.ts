@@ -16,14 +16,18 @@ export const allFieldsEmpty = (objectItem: any): boolean => {
 };
 
 export const allFieldsFilled = (fieldNames: string[], objectItem: any): boolean => {
-  if (isEmptyObject(objectItem) && fieldNames.length) {
+  const objectKeys: string[] = Object.keys(objectItem);
+
+  if (objectKeys.length < fieldNames.length) {
     return false;
   }
 
   let response: boolean = true;
 
   fieldNames.forEach((fieldName: string) => {
-    if (!get(objectItem, fieldName)) {
+    if (!objectKeys.includes(fieldName)) {
+      response = false;
+    } else if (!objectItem[fieldName]) {
       response = false;
     }
   });
