@@ -1,15 +1,15 @@
-@import "../../styles/styles.module.scss";
+@import '../../styles/styles.module.scss';
 
 .pageHeader {
   border-bottom: 1px solid $color-light-gray;
   background: $color-light;
-
   .title {
     cursor: pointer;
   }
 }
 
 .avatar {
+  margin-right: 32px;
   .icon {
     background: $color-dark-blue-lighter;
     cursor: pointer;

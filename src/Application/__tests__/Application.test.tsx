@@ -5,6 +5,7 @@ import configureMockStore from 'redux-mock-store';
 import thunk, { ThunkMiddleware } from 'redux-thunk';
 
 import Application from '../Application';
+import { MemoryRouter } from 'react-router-dom';
 
 describe('Tests for application component', () => {
   const middleWares: ThunkMiddleware[] = [thunk];
@@ -12,7 +13,9 @@ describe('Tests for application component', () => {
 
   const wrapper: ReactWrapper = mount(
     <Provider store={store}>
-      <Application />
+      <MemoryRouter>
+        <Application />
+      </MemoryRouter>
     </Provider>,
   );
 
