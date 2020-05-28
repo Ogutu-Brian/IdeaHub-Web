@@ -1,10 +1,12 @@
-import React, { useState, ChangeEvent } from 'react';
+import React, { useState, ChangeEvent, Dispatch } from 'react';
 import { Row, Col } from 'antd';
+import { connect } from 'react-redux';
 
 import { LandingPageHeader, Input, Button } from '../Components';
 import { Modal } from './Components';
 
 import styles from './CodeVerification.module.scss';
+import { Store } from '../store/interfaces';
 
 const CodeVerification: React.FC = () => {
   const [verificationCode, setVerificationCode] = useState<string>('');
@@ -58,4 +60,10 @@ const CodeVerification: React.FC = () => {
   );
 };
 
-export default CodeVerification;
+const mapStateToProps = (state: Store) => ({
+  signUp: state.signUp,
+});
+
+const mapDispatchToProps = (dispatch: Dispatch<any>) => ({});
+
+export default connect(mapStateToProps, mapDispatchToProps)(CodeVerification);
