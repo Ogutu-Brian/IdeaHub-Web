@@ -12,16 +12,16 @@ const DropDown: React.FC<Props> = (props) => {
   const { children, items } = props;
 
   return (
-    <AntDropdown
-      trigger={['hover']}
-      overlay={
-        <Overlay
-          items={items}
-        />
-      }
-    >
-      {children}
-    </AntDropdown>
+    <>
+      <span id="overlay-container" />
+      <AntDropdown
+        trigger={['click']}
+        getPopupContainer={() => document.getElementById('overlay-container') || document.body}
+        overlay={<Overlay items={items} />}
+      >
+        {children}
+      </AntDropdown>
+    </>
   );
 };
 
