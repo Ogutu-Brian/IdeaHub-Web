@@ -35,7 +35,7 @@ const PageHeader: React.FC<Props> = (props) => {
 
   return (
     <Header className={styles.pageHeader}>
-      <Row style={{ paddingRight: 32 }} type="flex" justify="space-between">
+      <Row type="flex" justify="space-between">
         <Col>
           <Row type="flex">
             <Col>

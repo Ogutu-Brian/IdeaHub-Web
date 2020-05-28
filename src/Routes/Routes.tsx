@@ -19,6 +19,7 @@ const AuthComponent: FC<any> = (props) => {
     isLoggedIn: true,
   };
   const user = { role: '' };
+
   if (authenticated && !auth.isLoggedIn) {
     return <Redirect to="/login" />;
   }
@@ -26,6 +27,7 @@ const AuthComponent: FC<any> = (props) => {
   if (allowedRoles && !allowedRoles.includes(user.role)) {
     return <Exception {...props} exception={403} text="You are not authorized to access this page" />;
   }
+
   if (showLayout) {
     return (
       <Application>
@@ -33,6 +35,7 @@ const AuthComponent: FC<any> = (props) => {
       </Application>
     );
   }
+
   return <Component {...props} />;
 };
 

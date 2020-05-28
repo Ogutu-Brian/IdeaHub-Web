@@ -19,6 +19,12 @@ export interface Config {
 
 export const routesConfig: Config[] = [
   {
+    component: () => <Redirect to="/signup" />,
+    path: '/',
+    authenticated: false,
+    showLayout: false,
+  },
+  {
     component: () => <LandingPage hasAccount={true} />,
     path: '/login',
     authenticated: false,
