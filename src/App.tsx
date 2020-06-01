@@ -1,25 +1,17 @@
 import React from 'react';
 import 'antd/dist/antd.css';
-import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
 import store from './store';
-import { LandingPage } from './LandingPage';
-import { Application } from './Application';
-import { CodeVerification } from './CodeVerification';
 
 import './App.scss';
+import Routes from './Routes/Routes';
 
 const App: React.FC = () => (
   <Provider store={store}>
     <Router>
-      <Switch>
-        <Redirect exact from="/" to="/signup" />
-        <Route component={() => <LandingPage hasAccount={false} />} exact path="/signup" />
-        <Route component={() => <LandingPage hasAccount={true} />} exact path="/login" />
-        <Route component={CodeVerification} exact path="/verify" />
-        <Route component={Application} path="/ideahub" />
-      </Switch>
+      <Routes />
     </Router>
   </Provider>
 );

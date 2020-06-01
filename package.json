@@ -81,7 +81,8 @@
   "devDependencies": {
     "@types/enzyme": "^3.10.5",
     "@types/react": "^16.9.19",
-    "@types/react-dom": "^16.9.5"
+    "@types/react-dom": "^16.9.5",
+    "cra-bundle-analyzer": "^0.0.3"
   },
   "husky": {
     "hooks": {

@@ -162,7 +162,11 @@ const LandingPage: React.FC<Props> = (props) => {
     }
   };
 
-  const logIn = (): void => {};
+  const logIn = (): void => {
+    const redirectRoute: string = '/ideahub';
+
+    history.push(redirectRoute);
+  };
 
   return (
     <>

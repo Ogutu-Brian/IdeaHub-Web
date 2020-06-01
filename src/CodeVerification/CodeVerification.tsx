@@ -11,19 +11,20 @@ import { signUpSuccess } from '../store/signUp/actions';
 import { SIGN_UP_STAGES } from '../utils';
 
 import styles from './CodeVerification.module.scss';
+import { useHistory } from 'react-router-dom';
 
 interface Props {
   signUpData: SignUp;
   signUpUserSuccess: (data: SignUp) => void;
-  history: any;
 }
 
 const CodeVerification: React.FC<Props> = (props) => {
-  const { signUpData, history, signUpUserSuccess } = props;
+  const { signUpData, signUpUserSuccess } = props;
   const [verificationCode, setVerificationCode] = useState<string>('');
   const [modalVisible, setModalVisible] = useState<boolean>(false);
   const [continueButtonLoading, setContinueButtonLoading] = useState<boolean>(false);
   const [verificationErrored, setVerificationErrored] = useState<boolean>(false);
+  let history = useHistory();
 
   const onChange = (e: ChangeEvent<HTMLInputElement>): void => {
     e.persist();
