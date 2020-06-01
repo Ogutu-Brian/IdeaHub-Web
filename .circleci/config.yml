@@ -1,6 +1,7 @@
 version: 2.1
 orbs:
   node: circleci/node@1.1.6
+  slack: circleci/slack@3.4.2
 jobs:
   build-and-test:
     executor:
@@ -11,6 +12,10 @@ jobs:
           steps:
             - run: npm install
             - run: npm test
+      - run: exit 0
+      - slack/status:
+        mentions: channel
+        webhook: webhook
 workflows:
     build-and-test:
       jobs:
