@@ -83,6 +83,10 @@ const LandingPage: React.FC<Props> = (props) => {
       })
       .catch((error) => {
         setLoadingButton(false);
+        setFieldErrors((errors: any) => ({
+          ...errors,
+          email: error.response.data.user[0],
+        }));
         signUpUserError(humps.camelizeKeys(error.response.data));
       });
   };

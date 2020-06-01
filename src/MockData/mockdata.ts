@@ -2,6 +2,7 @@ import { Profile } from '../store/profile/actions/interfaces';
 import { Action } from '../store/interfaces';
 import { USER_DETAILS } from '../store/profile/actionTypes';
 import { SIGN_UP_SUCCESS, SIGN_UP_ERROR } from '../store/signUp/actionTypes';
+import { SIGN_UP_STAGES } from '../utils';
 
 export const MockData = {
   Ideas: [...Array(100).keys()].map((item) => ({
@@ -50,6 +51,7 @@ export const successSignUpAction: Action = {
   payload: {
     firstName: 'test name',
     lastName: 'test name',
+    stage: SIGN_UP_STAGES.VERIFY,
   },
 };
 
