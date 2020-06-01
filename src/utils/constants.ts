@@ -6,4 +6,5 @@ export enum SIGN_UP_STAGES {
   VERIFY = 'verify',
   ERROR = 'error',
   INITIAL = 'initial',
+  DONE = 'done',
 }

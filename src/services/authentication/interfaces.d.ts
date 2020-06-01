@@ -6,3 +6,8 @@ export interface FieldsData {
   confirmPassword?: string;
   [x: string]: string;
 }
+
+export interface VerificationData {
+  email?: string;
+  verificationCode?: string;
+}

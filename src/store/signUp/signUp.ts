@@ -11,11 +11,13 @@ export const initialState: SignUp = {
 };
 
 const signUp = (state: SignUp = initialState, action: Action): SignUp => {
-  switch (action.type) {
+  const { payload, type } = action;
+
+  switch (type) {
     case SIGN_UP_SUCCESS:
       return {
-        ...action.payload,
-        stage: SIGN_UP_STAGES.VERIFY,
+        ...payload,
+        stage: payload.stage,
       };
     case SIGN_UP_ERROR:
       return {
